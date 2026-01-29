@@ -1,0 +1,5 @@
+[0.000000] (-) TimerEvent: {}
+[0.000278] (my_cool_robot_controller_package) JobQueued: {'identifier': 'my_cool_robot_controller_package', 'dependencies': OrderedDict([('my_cool_robot_controller_package', '/home/valerio/RTW_my_workspace/install/my_cool_robot_controller_package')])}
+[0.000294] (my_cool_robot_controller_package) JobStarted: {'identifier': 'my_cool_robot_controller_package'}
+[0.019025] (my_cool_robot_controller_package) JobEnded: {'identifier': 'my_cool_robot_controller_package', 'rc': 0}
+[0.019414] (-) EventReactorShutdown: {}

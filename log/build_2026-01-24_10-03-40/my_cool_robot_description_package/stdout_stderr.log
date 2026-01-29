@@ -1,0 +1,84 @@
+-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_cmake_pytest: 1.3.11 (/opt/ros/humble/share/ament_cmake_pytest/cmake)
+-- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/valerio/RTW_my_workspace/build/my_cool_robot_description_package
+-- Install configuration: "RelWithDebInfo"
+-- Execute custom install script
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/config/.gitkeep
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/my_cool_robot_name.launch.xml
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.py
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.xml
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/collision/.gitkeep
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/visual/.gitkeep
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/rviz/my_cool_robot_name.rviz
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/inertials.xacro
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/materials.xacro
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name.urdf.xacro
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.ros2_control.xacro
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.xacro
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/test/my_cool_robot_name_test_urdf_xacro.py
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/config/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/my_cool_robot_name.launch.xml
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.py
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.xml
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/collision/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/visual/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/rviz/my_cool_robot_name.rviz
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/inertials.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/materials.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name.urdf.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.ros2_control.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/test/my_cool_robot_name_test_urdf_xacro.py
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/config/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/my_cool_robot_name.launch.xml
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.py
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.xml
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/collision/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/visual/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/rviz/my_cool_robot_name.rviz
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/inertials.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/materials.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name.urdf.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.ros2_control.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/test/my_cool_robot_name_test_urdf_xacro.py
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/config/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/my_cool_robot_name.launch.xml
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.py
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/launch/view_my_cool_robot_name.launch.xml
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/collision/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/meshes/my_cool_robot_name/visual/.gitkeep
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/rviz/my_cool_robot_name.rviz
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/inertials.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/common/materials.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name.urdf.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.ros2_control.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/urdf/my_cool_robot_name/my_cool_robot_name_macro.xacro
+-- Up-to-date symlink: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/test/my_cool_robot_name_test_urdf_xacro.py
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/ament_index/resource_index/package_run_dependencies/my_cool_robot_description_package
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/ament_index/resource_index/parent_prefix_path/my_cool_robot_description_package
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/environment/ament_prefix_path.sh
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/environment/ament_prefix_path.dsv
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/environment/path.sh
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/environment/path.dsv
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/local_setup.bash
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/local_setup.sh
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/local_setup.zsh
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/local_setup.dsv
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/package.dsv
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/ament_index/resource_index/packages/my_cool_robot_description_package
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/cmake/my_cool_robot_description_packageConfig.cmake
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/cmake/my_cool_robot_description_packageConfig-version.cmake
+-- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_description_package/share/my_cool_robot_description_package/package.xml

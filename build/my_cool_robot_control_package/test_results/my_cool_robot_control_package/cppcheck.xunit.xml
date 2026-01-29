@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="my_cool_robot_control_package.cppcheck"
+  tests="3"
+  errors="0"
+  failures="0"
+  time="0.032"
+  skipped="0"
+>
+  <testcase
+    name="include/my_cool_robot_control_package/my_cool_robot_hardware.hpp"
+    classname="my_cool_robot_control_package.cppcheck"/>
+  <testcase
+    name="src/my_cool_robot_hardware.cpp"
+    classname="my_cool_robot_control_package.cppcheck"/>
+  <testcase
+    name="test/test_my_cool_robot_hardware.cpp"
+    classname="my_cool_robot_control_package.cppcheck"/>
+  <system-out>Checked files:
+* include/my_cool_robot_control_package/my_cool_robot_hardware.hpp
+* src/my_cool_robot_hardware.cpp
+* test/test_my_cool_robot_hardware.cpp</system-out>
+</testsuite>

@@ -1,0 +1,43 @@
+[0.011s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_controller_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake /home/valerio/RTW_my_workspace/src/my_cool_robot_controller_package -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/valerio/RTW_my_workspace/install/my_cool_robot_controller_package
+[0.019s] [33mCMake Warning (dev) in CMakeLists.txt:
+[0.019s]   No project() command is present.  The top-level CMakeLists.txt file must
+[0.019s]   contain a literal, direct call to the project() command.  Add a line of
+[0.020s]   code such as
+[0.020s] 
+[0.020s]     project(ProjectName)
+[0.020s] 
+[0.020s]   near the top of the file, but after cmake_minimum_required().
+[0.020s] 
+[0.020s]   CMake is pretending there is a "project(Project)" command on the first
+[0.020s]   line.
+[0.020s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.020s] [0m
+[0.062s] -- The C compiler identification is GNU 11.4.0
+[0.104s] -- The CXX compiler identification is GNU 11.4.0
+[0.110s] -- Detecting C compiler ABI info
+[0.175s] -- Detecting C compiler ABI info - done
+[0.180s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.180s] -- Detecting C compile features
+[0.180s] -- Detecting C compile features - done
+[0.182s] -- Detecting CXX compiler ABI info
+[0.251s] -- Detecting CXX compiler ABI info - done
+[0.255s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.256s] -- Detecting CXX compile features
+[0.256s] -- Detecting CXX compile features - done
+[0.256s] [31mCMake Error at CMakeLists.txt:2 (generate_parameter_library):
+[0.256s]   Unknown CMake command "generate_parameter_library".
+[0.256s] 
+[0.256s] [0m
+[0.256s] [33mCMake Warning (dev) in CMakeLists.txt:
+[0.257s]   No cmake_minimum_required command is present.  A line of code such as
+[0.257s] 
+[0.257s]     cmake_minimum_required(VERSION 3.22)
+[0.257s] 
+[0.257s]   should be added at the top of the file.  The version specified may be lower
+[0.257s]   if you wish to support older CMake versions for this project.  For more
+[0.257s]   information run "cmake --help-policy CMP0000".
+[0.257s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.257s] [0m
+[0.257s] -- Configuring incomplete, errors occurred!
+[0.257s] See also "/home/valerio/RTW_my_workspace/build/my_cool_robot_controller_package/CMakeFiles/CMakeOutput.log".
+[0.259s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_controller_package' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake /home/valerio/RTW_my_workspace/src/my_cool_robot_controller_package -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/valerio/RTW_my_workspace/install/my_cool_robot_controller_package

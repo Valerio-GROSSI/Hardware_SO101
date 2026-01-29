@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="my_cool_robot_control_package.xmllint"
+  tests="2"
+  errors="0"
+  failures="0"
+  time="1.268"
+>
+  <testcase
+    name="my_cool_robot_control_package.xml"
+    classname="my_cool_robot_control_package.xmllint"/>
+  <testcase
+    name="package.xml"
+    classname="my_cool_robot_control_package.xmllint"/>
+  <system-out>Checked files:
+* my_cool_robot_control_package.xml
+* package.xml</system-out>
+</testsuite>

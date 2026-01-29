@@ -1,0 +1,22 @@
+-- run_test.py: invoking following command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package':
+ - /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/test_my_cool_robot_hardware --gtest_output=xml:/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/test_results/my_cool_robot_control_package/test_my_cool_robot_hardware.gtest.xml
+
+Running main() from gmock_main.cc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestMyCoolRobotHardware
+[ RUN      ] TestMyCoolRobotHardware.load_my_cool_robot_hardware_2dof
+[0m[INFO] [1769246112.023278165] [resource_manager]: Loading hardware 'MyCoolRobotHardware2dof' [0m
+[0m[INFO] [1769246112.023585097] [resource_manager]: Initialize hardware 'MyCoolRobotHardware2dof' [0m
+[0m[INFO] [1769246112.023601097] [resource_manager]: Successful initialization of hardware 'MyCoolRobotHardware2dof'[0m
+[       OK ] TestMyCoolRobotHardware.load_my_cool_robot_hardware_2dof (48 ms)
+[----------] 1 test from TestMyCoolRobotHardware (48 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (48 ms total)
+[  PASSED  ] 1 test.
+
+
+-- run_test.py: return code 0
+-- run_test.py: inject classname prefix into gtest result file '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/test_results/my_cool_robot_control_package/test_my_cool_robot_hardware.gtest.xml'
+-- run_test.py: verify result file '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/test_results/my_cool_robot_control_package/test_my_cool_robot_hardware.gtest.xml'

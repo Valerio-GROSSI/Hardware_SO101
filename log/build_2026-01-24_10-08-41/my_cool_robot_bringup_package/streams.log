@@ -1,0 +1,60 @@
+[0.011s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake /home/valerio/RTW_my_workspace/src/my_cool_robot_bringup_package -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package
+[0.060s] -- The C compiler identification is GNU 11.4.0
+[0.101s] -- The CXX compiler identification is GNU 11.4.0
+[0.106s] -- Detecting C compiler ABI info
+[0.170s] -- Detecting C compiler ABI info - done
+[0.174s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.174s] -- Detecting C compile features
+[0.174s] -- Detecting C compile features - done
+[0.176s] -- Detecting CXX compiler ABI info
+[0.245s] -- Detecting CXX compiler ABI info - done
+[0.249s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.250s] -- Detecting CXX compile features
+[0.250s] -- Detecting CXX compile features - done
+[0.257s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.396s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.433s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.514s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.592s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.593s] -- Added test 'lint_cmake' to check CMake code style
+[0.593s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.595s] -- Added test 'xmllint' to check XML markup files
+[0.597s] -- Configuring done
+[0.598s] -- Generating done
+[0.599s] [33mCMake Warning:
+[0.599s]   Manually-specified variables were not used by the project:
+[0.599s] 
+[0.599s]     CMAKE_EXPORT_COMPILE_COMMANDS
+[0.599s] 
+[0.599s] [0m
+[0.599s] -- Build files have been written to: /home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package
+[0.602s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake /home/valerio/RTW_my_workspace/src/my_cool_robot_bringup_package -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package
+[0.604s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --build /home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package -- -j32 -l32
+[0.641s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --build /home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package -- -j32 -l32
+[0.649s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --install /home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package
+[0.656s] -- Install configuration: "RelWithDebInfo"
+[0.656s] -- Execute custom install script
+[0.656s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/config/my_cool_robot_name_controllers.yaml
+[0.664s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/config/test_goal_publishers_config.yaml
+[0.673s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/launch/my_cool_robot_name.launch.py
+[0.680s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/launch/my_cool_robot_name.launch.xml
+[0.689s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/launch/test_forward_position_controller.launch.py
+[0.696s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/launch/test_forward_position_controller.launch.xml
+[0.704s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/launch/test_joint_trajectory_controller.launch.py
+[0.712s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/launch/test_joint_trajectory_controller.launch.xml
+[0.720s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/ament_index/resource_index/package_run_dependencies/my_cool_robot_bringup_package
+[0.728s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/ament_index/resource_index/parent_prefix_path/my_cool_robot_bringup_package
+[0.736s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/environment/ament_prefix_path.sh
+[0.744s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/environment/ament_prefix_path.dsv
+[0.753s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/environment/path.sh
+[0.761s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/environment/path.dsv
+[0.768s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/local_setup.bash
+[0.777s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/local_setup.sh
+[0.785s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/local_setup.zsh
+[0.793s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/local_setup.dsv
+[0.800s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/package.dsv
+[0.808s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/ament_index/resource_index/packages/my_cool_robot_bringup_package
+[0.817s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/cmake/my_cool_robot_bringup_packageConfig.cmake
+[0.825s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/cmake/my_cool_robot_bringup_packageConfig-version.cmake
+[0.832s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_bringup_package/share/my_cool_robot_bringup_package/package.xml
+[0.842s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --install /home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package

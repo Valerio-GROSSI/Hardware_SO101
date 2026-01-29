@@ -1,0 +1,9 @@
+<library path="my_cool_robot_control_package">
+  <class name="my_cool_robot_control_package/MyCoolRobotHardware"
+         type="my_cool_robot_control_package::MyCoolRobotHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      ros2_control hardware interface.
+    </description>
+  </class>
+</library>

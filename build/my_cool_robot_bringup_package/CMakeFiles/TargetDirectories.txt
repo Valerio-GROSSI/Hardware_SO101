@@ -1,0 +1,9 @@
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/uninstall.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/my_cool_robot_bringup_package_uninstall.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/test.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/edit_cache.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/rebuild_cache.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/list_install_components.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/install.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/install/local.dir
+/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/CMakeFiles/install/strip.dir

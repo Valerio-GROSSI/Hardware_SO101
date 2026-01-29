@@ -1,0 +1,94 @@
+[0.012s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake /home/valerio/RTW_my_workspace/src/my_cool_robot_control_package -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/valerio/RTW_my_workspace/install/my_cool_robot_control_package
+[0.060s] -- The C compiler identification is GNU 11.4.0
+[0.099s] -- The CXX compiler identification is GNU 11.4.0
+[0.104s] -- Detecting C compiler ABI info
+[0.169s] -- Detecting C compiler ABI info - done
+[0.173s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.173s] -- Detecting C compile features
+[0.174s] -- Detecting C compile features - done
+[0.175s] -- Detecting CXX compiler ABI info
+[0.245s] -- Detecting CXX compiler ABI info - done
+[0.249s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.249s] -- Detecting CXX compile features
+[0.250s] -- Detecting CXX compile features - done
+[0.257s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.389s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.423s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.523s] -- Found hardware_interface: 2.50.0 (/opt/ros/humble/share/hardware_interface/cmake)
+[0.708s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.735s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.773s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.824s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.881s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.511s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.537s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.633s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.719s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.728s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.744s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.747s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.754s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.763s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.807s] -- Looking for pthread.h
+[1.925s] -- Looking for pthread.h - found
+[1.925s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.990s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.991s] -- Found Threads: TRUE  
+[2.090s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.200s] -- Found gmock sources under '/opt/ros/humble/src/gmock_vendor': C++ tests using 'Google Mock' will be built
+[2.219s] -- Found ament_cmake_gtest: 1.3.11 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[2.230s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[2.247s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.247s] -- Configured cppcheck include dirs: /home/valerio/RTW_my_workspace/src/my_cool_robot_control_package/include
+[2.247s] -- Configured cppcheck exclude dirs and/or files: 
+[2.248s] -- Added test 'lint_cmake' to check CMake code style
+[2.249s] -- Added test 'uncrustify' to check C / C++ code style
+[2.249s] -- Configured uncrustify additional arguments: 
+[2.250s] -- Added test 'xmllint' to check XML markup files
+[2.259s] -- Configuring done
+[2.373s] -- Generating done
+[2.376s] -- Build files have been written to: /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package
+[2.384s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake /home/valerio/RTW_my_workspace/src/my_cool_robot_control_package -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/valerio/RTW_my_workspace/install/my_cool_robot_control_package
+[2.385s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --build /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package -- -j32 -l32
+[2.435s] [ 11%] [32mBuilding CXX object CMakeFiles/my_cool_robot_control_package.dir/src/my_cool_robot_hardware.cpp.o[0m
+[2.436s] [ 22%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/opt/ros/humble/src/gtest_vendor/src/gtest-all.cc.o[0m
+[2.436s] [ 33%] [32mBuilding CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o[0m
+[2.437s] [ 44%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[3.332s] [ 55%] [32m[1mLinking CXX static library libgmock_main.a[0m
+[4.178s] [ 55%] Built target gmock_main
+[5.523s] [ 66%] [32m[1mLinking CXX shared library libmy_cool_robot_control_package.so[0m
+[5.718s] [ 66%] Built target my_cool_robot_control_package
+[7.004s] [ 77%] [32m[1mLinking CXX static library libgmock.a[0m
+[7.114s] [ 77%] Built target gmock
+[7.139s] [ 88%] [32mBuilding CXX object CMakeFiles/test_my_cool_robot_hardware.dir/test/test_my_cool_robot_hardware.cpp.o[0m
+[8.028s] [100%] [32m[1mLinking CXX executable test_my_cool_robot_hardware[0m
+[8.145s] [100%] Built target test_my_cool_robot_hardware
+[8.155s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --build /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package -- -j32 -l32
+[8.165s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --install /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package
+[8.171s] -- Install configuration: "RelWithDebInfo"
+[8.172s] -- Execute custom install script
+[8.172s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package//my_cool_robot_control_package.xml
+[8.180s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/lib/libmy_cool_robot_control_package.so
+[8.188s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/include/my_cool_robot_control_package/my_cool_robot_hardware.hpp
+[8.196s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/environment/library_path.sh
+[8.204s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/environment/library_path.dsv
+[8.212s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/ament_index/resource_index/package_run_dependencies/my_cool_robot_control_package
+[8.220s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/ament_index/resource_index/parent_prefix_path/my_cool_robot_control_package
+[8.228s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/environment/ament_prefix_path.sh
+[8.237s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/environment/ament_prefix_path.dsv
+[8.244s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/environment/path.sh
+[8.252s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/environment/path.dsv
+[8.260s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/local_setup.bash
+[8.269s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/local_setup.sh
+[8.276s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/local_setup.zsh
+[8.284s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/local_setup.dsv
+[8.293s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/package.dsv
+[8.300s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/ament_index/resource_index/packages/my_cool_robot_control_package
+[8.308s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/my_cool_robot_control_package
+[8.316s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/cmake/ament_cmake_export_include_directories-extras.cmake
+[8.324s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/cmake/ament_cmake_export_libraries-extras.cmake
+[8.331s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/cmake/ament_cmake_export_dependencies-extras.cmake
+[8.340s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/cmake/my_cool_robot_control_packageConfig.cmake
+[8.348s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/cmake/my_cool_robot_control_packageConfig-version.cmake
+[8.356s] -- Symlinking: /home/valerio/RTW_my_workspace/install/my_cool_robot_control_package/share/my_cool_robot_control_package/package.xml
+[8.365s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble /usr/bin/cmake --install /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package
