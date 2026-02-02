@@ -77,7 +77,7 @@ public:
         std::optional<std::unordered_map<std::string, MotorCalibration>>& calibration = std::nullopt
     );
 
-    virtual ~MotorsBus() = default; // base polymorphique
+    // virtual ~MotorsBus() = default; // base polymorphique
 
 protected:
     std::string port_;
@@ -96,8 +96,21 @@ protected:
     std::vector<std::string> models_;
 
     void _validate_motors();
-    bool is_connected() const;
+
     void connect(bool handshake = true);
-    void _connect(bool handshake = true);  
+    // bool is_connected() const;
+    bool is_connected() const { return is_connected_impl(); }
+    void _connect(bool handshake = true);
+    // self.packet_handler.openPort()
+    virtual bool open_port_impl() = 0;
+    bool open_port_impl() { return port_handler_.openPort(); }
+    // void _handshake();
+    virtual void _handshake_impl() = 0;
+    void _handshake() { _handshake_impl(); }
+    // void set_timeout();
+    virtual void set_timeout_impl(std::optional<int> timeout_ms) = 0;
+    void set_timeout(std::optional<int> timeout_ms = std::nullopt) {
+        set_timeout_impl(timeout_ms); }
+    void _assert_motors_exist();
 };
  

@@ -1,5 +1,8 @@
 ////////// MotorsBus.cpp //////////
 #include "MotorsBus.hpp"
+#include "errors.hpp"
+#include <iostream>
+#define LOG_DEBUG(msg) std::cerr << "[DEBUG] " << msg << "\n"
 
 void setCalibration(
     std::optional<std::unordered_map<std::string, MotorCalibration>>& calib
@@ -39,30 +42,29 @@ MotorsBus::MotorsBus(
     _validate_motors();
 }
 
-bool MotorsBus::is_connected() const
-{
-    return port_handler_ && port_handler_->is_open();
-}
+// bool MotorsBus::is_connected() const
+// {
+//     return port_handler_ && port_handler_->is_open();
+// }
 
 void MotorsBus::connect(bool handshake)
 {
     if (is_connected()) {
         throw DeviceAlreadyConnectedError(
-            port_ + " is already connected. Do not call MotorBus::connect() twice."
+            "MotorsBus " + port_ + " is already connected. Do not call MotorsBus::connect() twice."
         );
 
     _connect(handshake);
     set_timeout();
 
-    logger.debug("MotorBus connected.");
+    LOG_DEBUG("MotorsBus connected.");
     }
-
 }
 
 void MotorsBus::_connect(bool handshake)
 {
     try {
-        if (!port_handler_->openPort()) {
+        if (!open_port_impl()) {
             throw std::runtime_error(
                 "Failed to open port '" + port_ + "'."
             );

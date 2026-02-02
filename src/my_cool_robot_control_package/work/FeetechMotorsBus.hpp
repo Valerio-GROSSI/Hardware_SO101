@@ -29,16 +29,32 @@ FeetechMotorsBus(
     int protocol_version = params::DEFAULT_PROTOCOL_VERSION
     );
 
+protected:
+    bool is_connected_impl() const override { return port_handler_.is_open; }
+    void _handshake_impl() override {
+        { _assert_motors_exist(); 
+          _assert_same_firmware(); }
+    }
+    bool open_port_impl() override { return port_handler_.openPort(); }
+
+    void set_timeout_impl(std::optional<int> timeout_ms) override
+    {
+        const int timeout_ms_ = timeout_ms.value_or(default_timeout_);
+        port_handler_.setPacketTimeout(timeout_ms_);
+    }
+
+    void _assert_same_firmware();
+
 private:
     int protocol_version_{params::DEFAULT_PROTOCOL_VERSION};
     int default_baudrate_{params::DEFAULT_BAUDRATE};
     std::int32_t default_timeout_{params::DEFAULT_TIMEOUT_MS};
 
-    scs::PortHandler port_handler;
-    scs::PacketHandler packet_handler;
-    scs::GroupSyncRead sync_reader;
-    scs::GroupSyncWrite sync_writer;
-    scs::COMM_SUCCESS _comm_success;
+    scs::PortHandler port_handler_;
+    scs::PacketHandler packet_handler_;
+    scs::GroupSyncRead sync_reader_;
+    scs::GroupSyncWrite sync_writer_;
+    scs::COMM_SUCCESS _comm_success_;
     std::uint8_t _no_error = 0x00; 
 
 private:
