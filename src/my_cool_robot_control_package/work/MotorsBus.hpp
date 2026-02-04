@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include <optional>
+#include <variant>
 
 #include "Tables.hpp"
 
@@ -112,5 +113,12 @@ protected:
     void set_timeout(std::optional<int> timeout_ms = std::nullopt) {
         set_timeout_impl(timeout_ms); }
     void _assert_motors_exist();
+
+    std::unordered_map<std::string, std::variant<int, double>> sync_read(
+        const std::string& data_name,
+        const std::optional<std::vector<std::string>> motors = std::nullopt,
+        bool normalize = true,
+        int num_retry = 0,
+    );
 };
  

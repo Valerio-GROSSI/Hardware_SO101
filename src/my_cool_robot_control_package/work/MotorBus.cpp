@@ -81,6 +81,41 @@ void MotorsBus::_connect(bool handshake)
     }
 }
 
+std::unordered_map<std::string, std::variant<int, double>> sync_read(
+    const std::string& data_name,
+    const std::optional<std::vector<std::string>> motors = std::nullopt,
+    bool normalize = true,
+    int num_retry = 0,
+    )
+{
+    if (!is_connected()) {
+        throw DeviceNotConnectedError("MotorsBus " + port_ + " is not connected. You need to run MotorsBus::connect().")
+    }
+
+    _assert_protocol_is_compatible("sync_read");
+
+    std::vector<std::string> names = _get_motors_list(motors);
+    std::vector<int> ids;
+    
+    ids.reserve(names.size());
+
+    std::vector<std::string> models;
+    models.reserve(names.size());
+
+    for (const auto& motor_name : names) {
+        const auto it = motors_.find(motor_name);
+        if (it == motors_.end()) {
+            throw std::runtime_error("Unknown motor: " + motor_name);
+        }
+
+        ids.push_back(it->second.id);
+        models.push_back(it->second.model);
+    }
+
+
+}
+
+
 
 
 
