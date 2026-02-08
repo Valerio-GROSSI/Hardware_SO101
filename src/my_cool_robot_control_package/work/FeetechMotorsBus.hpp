@@ -5,6 +5,7 @@
 #include <optional>
 #include <cstdint>
 #include <unordered_map>
+#include <utility>
 
 #include "MotorsBus.hpp"
 #include "Motor.hpp"
@@ -42,8 +43,14 @@ protected:
         const int timeout_ms_ = timeout_ms.value_or(default_timeout_);
         port_handler_.setPacketTimeout(timeout_ms_);
     }
-
+    std::optional<std::unordered_map<int, int>> broadcast_ping(
+        const int& num_retry = 0,
+        bool raise_on_error = false
+    );
+    std::pair<std::unordered_map<int,int>, int> _broadcast_ping();
     void _assert_same_firmware();
+    void _assert_protocol_is_compatible(const std::string& instruction_name);
+    void _assert_same_protocol_is_compatible(const std::string& instruction_name);
 
 private:
     int protocol_version_{params::DEFAULT_PROTOCOL_VERSION};

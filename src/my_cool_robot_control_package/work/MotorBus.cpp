@@ -33,6 +33,7 @@ MotorsBus::MotorsBus(
     for (const auto& [model, number] : feetech::model_number_table) {
         _model_nb_to_model_dict_.emplace(number, model);
     }
+￼
 
     models_.reserve(motors_.size());
     for (const auto& [name, motor] : motors_) {
@@ -111,6 +112,20 @@ std::unordered_map<std::string, std::variant<int, double>> sync_read(
         ids.push_back(it->second.id);
         models.push_back(it->second.model);
     }
+
+void _setup_sunc_reader(
+    const std::vector<int>& motor_ids,
+    const int& addr,
+    const int& length)
+    {
+        sync_reader.clearParam();
+        sync_reader.start_adress = addr;
+        syncc_reader.data_length = length;
+        for (const auto& id_ : motor_ids) {
+            sync_reader.addParam(id_)
+        }
+    }
+)
 
 
 }
