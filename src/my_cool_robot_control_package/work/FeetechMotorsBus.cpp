@@ -322,3 +322,13 @@ std::unordered_map<int, int> FeetechMotorsBus::_read_model_number(const std::vec
 
     return model_numbers;
 }
+
+void FeetechMotorsBus::patch_setPacketTimeout(std::size_t packet_length) 
+    {
+        packet_start_time_ = getCurrentTime();
+
+        packet_timeout_ =
+        (tx_time_per_byte_ * static_cast<double>(packet_length)) +
+        (tx_time_per_byte_ * 3.0) +
+        50.0;
+}

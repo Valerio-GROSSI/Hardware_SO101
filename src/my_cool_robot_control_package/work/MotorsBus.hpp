@@ -113,6 +113,7 @@ protected:
     void set_timeout(std::optional<int> timeout_ms = std::nullopt) {
         set_timeout_impl(timeout_ms); }
     void _assert_motors_exist();
+    void _setup_sync_reader(const std::vector<int>& motor_ids, const int& addr, const int& length)
 
     std::unordered_map<std::string, std::variant<int, double>> sync_read(
         const std::string& data_name,

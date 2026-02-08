@@ -113,21 +113,18 @@ std::unordered_map<std::string, std::variant<int, double>> sync_read(
         models.push_back(it->second.model);
     }
 
-void _setup_sunc_reader(
+void _setup_sync_reader(
     const std::vector<int>& motor_ids,
     const int& addr,
     const int& length)
     {
         sync_reader.clearParam();
-        sync_reader.start_adress = addr;
-        syncc_reader.data_length = length;
+        sync_reader.start_address = addr;
+        sync_reader.data_length = length;
         for (const auto& id_ : motor_ids) {
-            sync_reader.addParam(id_)
+            sync_reader.addParam(id_);
         }
     }
-)
-
-
 }
 
 
