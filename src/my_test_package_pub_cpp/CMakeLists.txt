@@ -22,10 +22,19 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(so101_ros2_pub_cpp src/so101_ros2_pub.cpp)
-ament_target_dependencies(so101_ros2_pub_cpp rclcpp std_msgs)
+add_executable(my_executable 
+  src/main.cpp
+  )
 
-install(TARGETS so101_ros2_pub_cpp
+target_include_directories(my_executable PUBLIC
+  $<BUILD_INTERFACE:$
+{CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+ament_target_dependencies(my_executable rclcpp std_msgs)
+
+install(TARGETS my_executable
   DESTINATION lib/${PROJECT_NAME}
 )
 
