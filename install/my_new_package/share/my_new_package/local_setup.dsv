@@ -1,1 +1,2 @@
-/home/valerio/RTW_my_workspace/build/my_new_package/ament_cmake_environment_hooks/local_setup.dsv
+source;share/my_new_package/environment/ament_prefix_path.sh
+source;share/my_new_package/environment/path.sh

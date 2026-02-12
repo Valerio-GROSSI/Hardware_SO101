@@ -1,1 +1,0 @@
-/home/valerio/RTW_my_workspace/build/my_cool_robot_bringup_package/ament_cmake_core/my_cool_robot_bringup_packageConfig.cmake

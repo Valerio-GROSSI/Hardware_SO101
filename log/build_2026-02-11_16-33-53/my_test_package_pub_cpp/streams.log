@@ -1,0 +1,50 @@
+[0.012s] Invoking command in '/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble PS1=\[\e]0;$(parse_ros_workspace)\a\]\[\e[1;32m\]\u\[\[\e[0;37m\]@\[\[\e[0;33m\]\h\[\[\e[1;33m\]${text}\[\[\e[0;37m\]:\[$(set_ros_workspace_color)\]$(parse_ros_workspace)\[\[\e[0;32m\]$(parse_git_bracket)\[$(set_git_color)\]$(get_gitbranch)\[\e[0;32m\]>\[\e[1;35m\]\W\[\[\e[1;35m\]$\[\[\e[0m\]\[\e[m\] /usr/bin/cmake --build /home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp -- -j32 -l32
+[0.056s] [35m[1mConsolidate compiler generated dependencies of target my_executable[0m
+[0.074s] [ 33%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101.cpp.o[0m
+[0.074s] [ 66%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101_ros2_pub.cpp.o[0m
+[0.311s] In file included from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:1[m[K:
+[0.311s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:28:1:[m[K [01;31m[Kerror: [m[Kexpected class-name before ‘[01m[K{[m[K’ token
+[0.312s]    28 | [01;31m[K{[m[K
+[0.312s]       | [01;31m[K^[m[K
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:45:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kfunction[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[0.312s]    45 |     std::unordered_map < std::string, std::[01;31m[Kfunction[m[K < void()>> _additional_callbacks_;
+[0.312s]       |                                            [01;31m[K^~~~~~~~[m[K
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:7:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::function[m[K’ is defined in header ‘[01m[K<functional>[m[K’; did you forget to ‘[01m[K#include <functional>[m[K’?
+[0.312s]     6 | #include  <unordered_map>
+[0.312s]   +++ |+[32m[K#include <functional>[m[K
+[0.312s]     7 | // #include  "MotorsBus.hpp"
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:45:60:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[0.312s]    45 |     std::unordered_map < std::string, std::function < void([01;31m[K)[m[K>> _additional_callbacks_;
+[0.312s]       |                                                            [01;31m[K^[m[K
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:45:60:[m[K [01;31m[Kerror: [m[Ktemplate argument 5 is invalid
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:45:61:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K>[m[K’ token
+[0.312s]    45 |     std::unordered_map < std::string, std::function < void()[01;31m[K>>[m[K _additional_callbacks_;
+[0.312s]       |                                                             [01;31m[K^~[m[K
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:[m[K In constructor ‘[01m[KSO101::SO101(std::string, std::string, bool)[m[K’:
+[0.312s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:10:1:[m[K [01;31m[Kerror: [m[Kexpected identifier before ‘[01m[K,[m[K’ token
+[0.312s]    10 | [01;31m[K,[m[K port_(std::move(port))
+[0.312s]       | [01;31m[K^[m[K
+[0.319s] In file included from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:1[m[K:
+[0.319s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:38:17:[m[K [01;35m[Kwarning: [m[K‘[01m[KSO101::name_[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[0.319s]    38 |     std::string [01;35m[Kname_[m[K;
+[0.319s]       |                 [01;35m[K^~~~~[m[K
+[0.319s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:35:27:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kstd::filesystem::__cxx11::path SO101::calibration_path_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[0.319s]    35 |     std::filesystem::path [01;35m[Kcalibration_path_[m[K;
+[0.319s]       |                           [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[0.319s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:8:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[0.319s]     8 | [01;35m[KSO101[m[K::SO101(std::string port, std::string name, bool recalibrate)
+[0.319s]       | [01;35m[K^~~~~[m[K
+[0.319s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:8:55:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krecalibrate[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.319s]     8 | SO101::SO101(std::string port, std::string name, [01;35m[Kbool recalibrate[m[K)
+[0.319s]       |                                                  [01;35m[K~~~~~^~~~~~~~~~~[m[K
+[0.363s] gmake[2]: *** [CMakeFiles/my_executable.dir/build.make:90: CMakeFiles/my_executable.dir/src/so101.cpp.o] Error 1
+[0.363s] gmake[2]: *** Waiting for unfinished jobs....
+[1.160s] In file included from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101_ros2_pub.hpp:8[m[K,
+[1.160s]                  from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101_ros2_pub.cpp:1[m[K:
+[1.160s] [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:28:1:[m[K [01;31m[Kerror: [m[Kexpected class-name before ‘[01m[K{[m[K’ token
+[1.160s]    28 | [01;31m[K{[m[K
+[1.160s]       | [01;31m[K^[m[K
+[1.383s] gmake[2]: *** [CMakeFiles/my_executable.dir/build.make:76: CMakeFiles/my_executable.dir/src/so101_ros2_pub.cpp.o] Error 1
+[1.383s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/my_executable.dir/all] Error 2
+[1.383s] gmake: *** [Makefile:146: all] Error 2
+[1.384s] Invoked command in '/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/valerio/ros2_ws/install/my_robot_controller:/home/valerio/ws_moveit/install/moveit_configs_utils:/opt/ros/humble PS1=\[\e]0;$(parse_ros_workspace)\a\]\[\e[1;32m\]\u\[\[\e[0;37m\]@\[\[\e[0;33m\]\h\[\[\e[1;33m\]${text}\[\[\e[0;37m\]:\[$(set_ros_workspace_color)\]$(parse_ros_workspace)\[\[\e[0;32m\]$(parse_git_bracket)\[$(set_git_color)\]$(get_gitbranch)\[\e[0;32m\]>\[\e[1;35m\]\W\[\[\e[1;35m\]$\[\[\e[0m\]\[\e[m\] /usr/bin/cmake --build /home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp -- -j32 -l32

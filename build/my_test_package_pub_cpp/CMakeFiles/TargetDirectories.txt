@@ -1,0 +1,10 @@
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/uninstall.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/my_test_package_pub_cpp_uninstall.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/my_executable.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/test.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/edit_cache.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/rebuild_cache.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/list_install_components.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/install.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/install/local.dir
+/home/valerio/RTW_my_workspace/build/my_test_package_pub_cpp/CMakeFiles/install/strip.dir

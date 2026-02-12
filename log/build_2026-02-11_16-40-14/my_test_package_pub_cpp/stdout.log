@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target my_executable[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable my_executable[0m
+[100%] Built target my_executable
+-- Install configuration: ""
+-- Installing: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/lib/my_test_package_pub_cpp/my_executable
+-- Set runtime path of "/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/lib/my_test_package_pub_cpp/my_executable" to ""
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/ament_index/resource_index/package_run_dependencies/my_test_package_pub_cpp
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/ament_index/resource_index/parent_prefix_path/my_test_package_pub_cpp
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/ament_prefix_path.sh
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/path.sh
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/path.dsv
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.bash
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.sh
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.zsh
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.dsv
+-- Installing: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/package.dsv
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/ament_index/resource_index/packages/my_test_package_pub_cpp
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/cmake/my_test_package_pub_cppConfig.cmake
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/cmake/my_test_package_pub_cppConfig-version.cmake
+-- Up-to-date: /home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/package.xml

@@ -1,0 +1,3 @@
+[35m[1mConsolidate compiler generated dependencies of target my_executable[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101_ros2_pub.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101.cpp.o[0m

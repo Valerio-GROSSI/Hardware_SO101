@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
 if(BUILD_TESTING)
@@ -23,16 +24,16 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(my_executable 
-  src/main.cpp
+  src/so101_ros2_pub.cpp
+  src/so101.cpp
   )
 
 target_include_directories(my_executable PUBLIC
-  $<BUILD_INTERFACE:$
-{CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-ament_target_dependencies(my_executable rclcpp std_msgs)
+ament_target_dependencies(my_executable rclcpp std_msgs sensor_msgs)
 
 install(TARGETS my_executable
   DESTINATION lib/${PROJECT_NAME}

@@ -1,0 +1,16 @@
+-- Install configuration: ""
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/ament_index/resource_index/package_run_dependencies/my_new_package
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/ament_index/resource_index/parent_prefix_path/my_new_package
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/environment/ament_prefix_path.sh
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/environment/ament_prefix_path.dsv
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/environment/path.sh
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/environment/path.dsv
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/local_setup.bash
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/local_setup.sh
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/local_setup.zsh
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/local_setup.dsv
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/package.dsv
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/ament_index/resource_index/packages/my_new_package
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/cmake/my_new_packageConfig.cmake
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/cmake/my_new_packageConfig-version.cmake
+-- Installing: /home/valerio/RTW_my_workspace/install/my_new_package/share/my_new_package/package.xml

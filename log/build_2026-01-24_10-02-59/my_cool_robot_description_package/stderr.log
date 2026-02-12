@@ -1,8 +1,0 @@
-[31mCMake Error at /opt/ros/humble/share/ament_cmake_test/cmake/ament_add_test.cmake:125 (add_test):
-  add_test given test NAME "test_my_cool_robot_name_urdf_xacro" which already
-  exists in this directory.
-Call Stack (most recent call first):
-  /opt/ros/humble/share/ament_cmake_pytest/cmake/ament_add_pytest_test.cmake:169 (ament_add_test)
-  CMakeLists.txt:35 (ament_add_pytest_test)
-
-[0m

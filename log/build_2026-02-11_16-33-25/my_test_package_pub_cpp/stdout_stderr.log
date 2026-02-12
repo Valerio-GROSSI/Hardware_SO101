@@ -1,0 +1,17 @@
+[35m[1mConsolidate compiler generated dependencies of target my_executable[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101_ros2_pub.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101.cpp.o[0m
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kso101.hpp: No such file or directory
+    1 | #include [01;31m[K"so101.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/my_executable.dir/build.make:90: CMakeFiles/my_executable.dir/src/so101.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+In file included from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101_ros2_pub.hpp:8[m[K,
+                 from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101_ros2_pub.cpp:1[m[K:
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:28:1:[m[K [01;31m[Kerror: [m[Kexpected class-name before ‘[01m[K{[m[K’ token
+   28 | [01;31m[K{[m[K
+      | [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/my_executable.dir/build.make:76: CMakeFiles/my_executable.dir/src/so101_ros2_pub.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/my_executable.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

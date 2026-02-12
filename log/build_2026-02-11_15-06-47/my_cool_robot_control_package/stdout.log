@@ -1,0 +1,8 @@
+[35m[1mConsolidate compiler generated dependencies of target gmock_main[0m
+[35m[1mConsolidate compiler generated dependencies of target gmock[0m
+[ 11%] [32mBuilding CXX object CMakeFiles/my_cool_robot_control_package.dir/src/my_cool_robot_hardware.cpp.o[0m
+[ 33%] Built target gmock_main
+[ 66%] Built target gmock
+[ 77%] [32mBuilding CXX object CMakeFiles/test_my_cool_robot_hardware.dir/test/test_my_cool_robot_hardware.cpp.o[0m
+[ 88%] [32m[1mLinking CXX executable test_my_cool_robot_hardware[0m
+[ 88%] Built target test_my_cool_robot_hardware

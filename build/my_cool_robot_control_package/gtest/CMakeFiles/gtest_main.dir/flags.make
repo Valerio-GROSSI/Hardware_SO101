@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/opt/ros/humble/src/gtest_vendor/. -isystem /opt/ros/humble/src/gtest_vendor/include
 
-CXX_FLAGS = -O2 -g -DNDEBUG -Wall -Wextra -Wpedantic
+CXX_FLAGS = -Wall -Wextra -Wpedantic
 

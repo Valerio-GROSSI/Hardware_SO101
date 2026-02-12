@@ -1,7 +1,0 @@
-test_my_cool_robot_hardware 1 0.117278
-cppcheck 1 0.237685
-lint_cmake 1 0.0828777
-uncrustify 0 0
-xmllint 1 1.34891
----
-uncrustify

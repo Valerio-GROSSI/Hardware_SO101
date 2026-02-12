@@ -1,0 +1,24 @@
+[35m[1mConsolidate compiler generated dependencies of target my_executable[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101_ros2_pub.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/my_executable.dir/src/so101.cpp.o[0m
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:[m[K In constructor ‘[01m[KSO101::SO101(std::string, std::string, bool)[m[K’:
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:10:1:[m[K [01;31m[Kerror: [m[Kexpected identifier before ‘[01m[K,[m[K’ token
+   10 | [01;31m[K,[m[K port_(std::move(port))
+      | [01;31m[K^[m[K
+In file included from [01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:1[m[K:
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:39:17:[m[K [01;35m[Kwarning: [m[K‘[01m[KSO101::name_[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   39 |     std::string [01;35m[Kname_[m[K;
+      |                 [01;35m[K^~~~~[m[K
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/include/my_test_package_pub_cpp/so101.hpp:36:27:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kstd::filesystem::__cxx11::path SO101::calibration_path_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   36 |     std::filesystem::path [01;35m[Kcalibration_path_[m[K;
+      |                           [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:8:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+    8 | [01;35m[KSO101[m[K::SO101(std::string port, std::string name, bool recalibrate)
+      | [01;35m[K^~~~~[m[K
+[01m[K/home/valerio/RTW_my_workspace/src/my_test_package_pub_cpp/src/so101.cpp:8:55:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krecalibrate[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+    8 | SO101::SO101(std::string port, std::string name, [01;35m[Kbool recalibrate[m[K)
+      |                                                  [01;35m[K~~~~~^~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/my_executable.dir/build.make:90: CMakeFiles/my_executable.dir/src/so101.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/my_executable.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

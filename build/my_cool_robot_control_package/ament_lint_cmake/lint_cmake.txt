@@ -1,9 +1,0 @@
--- run_test.py: invoking following command in '/home/valerio/RTW_my_workspace/src/my_cool_robot_control_package':
- - /opt/ros/humble/bin/ament_lint_cmake --xunit-file /home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/test_results/my_cool_robot_control_package/lint_cmake.xunit.xml
-
-
-No problems found
-
-
--- run_test.py: return code 0
--- run_test.py: verify result file '/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/test_results/my_cool_robot_control_package/lint_cmake.xunit.xml'

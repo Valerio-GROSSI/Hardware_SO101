@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="1" failures="0" disabled="0" errors="0" time="0.048" timestamp="2026-01-24T10:15:11" name="AllTests">
-  <testsuite name="TestMyCoolRobotHardware" tests="1" failures="0" disabled="0" errors="0" time="0.048" timestamp="2026-01-24T10:15:11">
-    <testcase name="load_my_cool_robot_hardware_2dof" status="run" result="completed" time="0.048" timestamp="2026-01-24T10:15:11" classname="my_cool_robot_control_package.TestMyCoolRobotHardware" />
-  </testsuite>
-</testsuites>

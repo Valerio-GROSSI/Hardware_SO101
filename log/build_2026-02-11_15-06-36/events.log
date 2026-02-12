@@ -1,0 +1,9 @@
+[0.000000] (-) TimerEvent: {}
+[0.000173] (-) JobUnselected: {'identifier': 'my_cool_robot_bringup_package'}
+[0.000190] (-) JobUnselected: {'identifier': 'my_cool_robot_control_package'}
+[0.000200] (-) JobUnselected: {'identifier': 'my_cool_robot_controller_package'}
+[0.000210] (-) JobUnselected: {'identifier': 'my_cool_robot_description_package'}
+[0.000219] (-) JobUnselected: {'identifier': 'my_new_package'}
+[0.000228] (-) JobUnselected: {'identifier': 'my_test_package'}
+[0.000237] (-) JobUnselected: {'identifier': 'my_test_package_pub_cpp'}
+[0.000337] (-) EventReactorShutdown: {}

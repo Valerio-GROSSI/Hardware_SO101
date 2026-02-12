@@ -1,1 +1,0 @@
-/home/valerio/RTW_my_workspace/src/my_cool_robot_bringup_package/launch/my_cool_robot_name.launch.py

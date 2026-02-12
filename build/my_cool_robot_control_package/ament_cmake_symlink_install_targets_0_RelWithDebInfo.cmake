@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/valerio/RTW_my_workspace/build/my_cool_robot_control_package/libmy_cool_robot_control_package.so" "TARGETS" "my_cool_robot_control_package" "RUNTIME_DESTINATION" "bin" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib")

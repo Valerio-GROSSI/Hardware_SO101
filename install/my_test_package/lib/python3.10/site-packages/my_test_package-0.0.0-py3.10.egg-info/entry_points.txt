@@ -1,0 +1,3 @@
+[console_scripts]
+so101_ros2_pub = my_test_package.so101_ros2_pub:main
+

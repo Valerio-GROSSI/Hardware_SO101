@@ -1,0 +1,16 @@
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/lib/my_test_package_pub_cpp/my_executable
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/ament_index/resource_index/package_run_dependencies/my_test_package_pub_cpp
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/ament_index/resource_index/parent_prefix_path/my_test_package_pub_cpp
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/ament_prefix_path.sh
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/ament_prefix_path.dsv
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/path.sh
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/environment/path.dsv
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.bash
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.sh
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.zsh
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/local_setup.dsv
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/package.dsv
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/ament_index/resource_index/packages/my_test_package_pub_cpp
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/cmake/my_test_package_pub_cppConfig.cmake
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/cmake/my_test_package_pub_cppConfig-version.cmake
+/home/valerio/RTW_my_workspace/install/my_test_package_pub_cpp/share/my_test_package_pub_cpp/package.xml
