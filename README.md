@@ -8,6 +8,8 @@ The robot can be controlled using standard ros2_control controllers, teleoperate
 
 One of the project’s next objectives is to train the real robot to perform manipulation tasks, such as pick-and-place, using Isaac Lab for imitation learning and reinforcement learning, as well as the LeRobot framework.
 
+
+
 ## How to Run
 
 ### Calibration
@@ -22,6 +24,7 @@ Calibrate the So101 Follower arm :
 ros2 run so101_robot_hardware my_so101_ros2_calib_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
 
+
 ### Script-Based Leader–Follower Teleoperation - (without ros2_control)
 
 1. In a first terminal, run the So101 Publisher arm executable :
@@ -34,6 +37,7 @@ ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_n
 ```
 
 ``` --ros-args -p recalibrate:=true ``` to recalibrate at the start of execution as well
+
 
 ### Direct ROS 2 Leader–Follower Teleoperation - (ros2_control-based)
 
@@ -55,6 +59,8 @@ ros2 run so101_robot_bringup bridge_forward
 It uses the Publisher arm’s joint states as position commands for the Subscriber arm (via a `forward_command_controller`).  
 The `namespace` must match the arm model. Either model can be configured to act as the Publisher or Subscriber arm.  
 `recalibrate` must be set to `false` (default value). Indeed, recalibration implies `std::cin.get()` not supported by ROS 2 launch setup.
+
+
 
 ### Control of the Robotic Arm using standard ros2_control controllers
 
@@ -80,6 +86,7 @@ ros2 topic pub --once follower/joint_trajectory_controller/joint_trajectory traj
 "{joint_names:['joint1','joint2','joint3','joint4','joint5','joint6'],points: [{positions: [0.3, 0.1, 0.2, 0.3, 0.1, 0.2],time_from_start: {sec: 5, nanosec: 0}}]}"
 ```
 
+
 ### Control of the Robotic Arm using Moveit motion plannig
 
 1. Launch MoveIt and RViz interface for motion planning:
@@ -88,6 +95,7 @@ ros2 launch so101_robot_moveit moveit_real.launch.py
 ```
 
 2. Utiliser l'interface RVIZ pour génerer les commandes (via group_state)
+
 
 ### Example output - Control of the Robotic Arm using Moveit motion plannig
 
