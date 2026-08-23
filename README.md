@@ -97,7 +97,7 @@ ros2 topic pub --once follower/joint_trajectory_controller/joint_trajectory traj
 ros2 launch so101_robot_moveit moveit_real.launch.py
 ```
 
-2. Utiliser l'interface RVIZ pour génerer les commandes (via group_state)
+2. Use the RViz interface to generate commands (via group_state)
 
 <br>
 
