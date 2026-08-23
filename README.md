@@ -58,7 +58,7 @@ ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true namespac
 ros2 run so101_robot_bringup bridge_forward
 ```
 
-It uses the Publisher arm’s joint states as position commands for the Subscriber arm (via `forward_command_controller`).  
+It uses the Publisher arm’s joint states as position commands for the Subscriber arm (`forward_command_controller`).  
 The `namespace` must match the arm model. Either model can be configured to act as the Publisher or Subscriber arm.  
 `recalibrate` must be set to `false` (default value). Indeed, recalibration implies `std::cin.get()` not supported by ROS 2 launch setup.
 
