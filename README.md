@@ -39,12 +39,12 @@ ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_n
 
 1. In a first terminal, run the So101 Publisher arm launch file :
 ```bash
-ros2 launch so101_robot_bringup publisher_arm.launch.py namespace:=leader use_rviz:=true
+ros2 launch so101_robot_bringup publisher_arm.launch.py use_rviz:=true namespace:=leader
 ```
 
 2. In a second terminal, run the So101 Subscriber arm launch file :
 ```bash
-ros2 launch so101_robot_bringup subscriber_arm.launch.py namespace:=follower use_rviz:=true
+ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true namespace:=follower
 ```
 
 3. In a third terminal, run the Publisher-Subscriber bridge executable :
