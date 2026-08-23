@@ -31,7 +31,7 @@ ros2 run so101_robot_hardware my_so101_ros2_pub_executable --ros-args -p robot_n
 ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
 
-```bash --ros-args -p recalibrate:=true ``` pour recalibrer en plus au début de l'exécution
+``` --ros-args -p recalibrate:=true ``` pour recalibrer en plus au début de l'exécution
 
 3. Launch ros2_control and controllers :
 ```bash
