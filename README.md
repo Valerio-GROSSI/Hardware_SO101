@@ -56,15 +56,16 @@ It uses the Publisher arm’s joint states as position commands for the Subscrib
 The `namespace` must match the arm model. Either model can be configured to act as the Publisher or Subscriber arm.  
 `recalibrate` must be set to `false` (default value). Indeed, recalibration implies `std::cin.get()` not supported by ROS 2 launch setup.
 
-### Control of the Subscription Arm using standard ros2_control controllers
+### Control of the Robotic Arm using standard ros2_control controllers
 
-1. In a first terminal, run the So101 Publisher arm launch:
+1. In a first terminal, run the So101 Subscriber arm launch file :
 ```bash
-ros2 launch so101_robot_bringup publisher_arm.launch.py use_rviz:=true namespace:=follower use_sim:=false
+ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true namespace:=follower use_sim:=false
 ```
 
-You can run the project without real hardware, in simulation with either Gazebo Sim (gz_sim) or Gazebo Classic (gazebo_classic), make sure to keep use_sim set to true.
-You can also test the ROS 2 control pipeline using mock_hardware without launching a simulator (use_mock_hardware).
+You can run this launch file without real hardware, in simulation, with either Gazebo Sim (`gz_sim`) or Gazebo Classic (`gazebo_classic`).  
+In this case, make sure to keep `use_sim` set to true.  
+You can also test the ROS 2 control pipeline using mock_hardware without launching a simulator (`use_mock_hardware`).
 
 2. In a second terminal, issue a movement command:
 ```bash
