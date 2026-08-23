@@ -31,17 +31,62 @@ ros2 run so101_robot_hardware my_so101_ros2_pub_executable --ros-args -p robot_n
 ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
 
-``` --ros-args -p recalibrate:=true ``` pour recalibrer en plus au début de l'exécution
+``` --ros-args -p recalibrate:=true ``` to recalibrate at the start of execution as well
 
-3. Launch ros2_control and controllers :
+# Direct ROS 2 Teleoperation - ros2_control-Based
+
+1. In a first terminal, run the So101 Publisher arm launch:
 ```bash
-ros2 launch so101_robot_bringup my_so101_robot.launch.py
+ros2 launch so101_robot_bringup publisher_arm.launch.py namespace:=leader use_rviz:=true
 ```
 
-3. Launch MoveIt and RViz interface for motion planning :
+2. In a second terminal, run the So101 Subscriber arm launch:
 ```bash
-ros2 launch so101_robot_hardware so101_robot_moveit
+ros2 launch so101_robot_bringup subscriber_arm.launch.py namespace:=follower use_rviz:=true
 ```
+
+3. In a third terminal, run the Publisher-Subscriber bridge executable:
+```bash
+ros2 run so101_robot_bringup bridge_forward
+```
+
+It uses the Publisher arm’s joint states as position commands for the Subscriber arm via the forward_position_controller.
+The namespace must match the arm model; however, either model can be configured to act as a Leader or Follower.
+Leave recalibrate param set to false (the default), because recalibration waits for user input through std::cin.get(), which is not supported by this ROS 2 launch setup.
+
+# Control of the Subscription Arm using standard ros2_control controllers
+
+1. In a first terminal, run the So101 Publisher arm launch:
+```bash
+ros2 launch so101_robot_bringup publisher_arm.launch.py use_rviz:=true namespace:=follower use_sim:=false
+```
+
+You can run the project without real hardware, in simulation with either Gazebo Sim (gz_sim) or Gazebo Classic (gazebo_classic), make sure to keep use_sim set to true.
+You can also test the ROS 2 control pipeline using mock_hardware without launching a simulator (use_mock_hardware).
+
+2. In a second terminal, issue a movement command:
+```bash
+ros2 topic pub --once forward_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.1, 0.0, 0.1, 0.0, 0.1, 0.0]}"
+```
+
+If you want to use ros2_control joint_state_controller controller:
+3. In a third terminal:
+```bash
+ros2 control switch_controllers --controller-manager /follower/controller_manager --deactivate forward_position_controller --activate joint_trajectory_controller
+```
+```bash
+ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory /
+"{joint_names:['joint1','joint2','joint3','joint4','joint5','joint6'],points: [{positions: [0.15, 0.0, 0.0, 0.0, 0.0, 0.0],time_from_start: {sec: 5, nanosec: 0}}]}"
+```
+
+# Control of the Subscription Arm using Moveit motion plnning
+
+1. Launch MoveIt and RViz interface for motion planning:
+```bash
+ros2 launch so101_robot_moveit moveit_real.launch.py
+```
+
+2. Utiliser l'interface RVIZ pour génerer les commandes (via group_state)
 
 ## Results
 
