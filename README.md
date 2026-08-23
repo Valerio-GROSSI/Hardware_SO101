@@ -85,7 +85,7 @@ ros2 control switch_controllers --controller-manager /follower/controller_manage
 ```
 ```bash
 ros2 topic pub --once follower/joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory /
-"{joint_names:['joint1','joint2','joint3','joint4','joint5','joint6'],points: [{positions: [0.3, 0.1, 0.2, 0.3, 0.1, 0.2],time_from_start: {sec: 5, nanosec: 0}}]}"
+"{joint_names: ['joint1','joint2','joint3','joint4','joint5','joint6'], points: [{positions: [0.3, 0.1, 0.2, 0.3, 0.1, 0.2], time_from_start: {sec: 5, nanosec: 0}}]}"
 ```
 
 <br>
