@@ -102,14 +102,11 @@ ros2 launch so101_robot_moveit moveit_real.launch.py
 <br>
 
 ### Example output - Control of the Robotic Arm using Moveit motion planning
-<br>
 
 <p align="center">
   <b>So101 Follower Arm</b><br>
   <img src="./so101.gif" width="80%" />
 </p>
-
-<br>
 
 <p align="center">
   <b>Sample MoveIt Planning Groups Configuration</b><br>
