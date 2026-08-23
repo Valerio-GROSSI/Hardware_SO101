@@ -8,7 +8,7 @@ The robot can be controlled using standard ros2_control controllers, teleoperate
 
 One of the project’s next objectives is to train the real robot to perform manipulation tasks, such as pick-and-place, using Isaac Lab for imitation learning and reinforcement learning, as well as the LeRobot framework.
 
-
+<br>
 
 ## How to Run
 
