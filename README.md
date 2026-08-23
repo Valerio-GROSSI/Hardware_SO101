@@ -24,7 +24,7 @@ ros2 run so101_robot_hardware my_so101_ros2_calib_executable --ros-args -p robot
 
 ### Script-Based Leader–Follower Teleoperation - (without ros2_control)
 
-1. In a first terminal, run the So101 Publisher arm executable:
+1. In a first terminal, run the So101 Publisher arm executable :
 ```bash
 ros2 run so101_robot_hardware my_so101_ros2_pub_executable --ros-args -p robot_name:=so101_leader port:=/dev/ttyACM0 
 ```
@@ -37,17 +37,17 @@ ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_n
 
 ### Direct ROS 2 Teleoperation - (ros2_control-based)
 
-1. In a first terminal, run the So101 Publisher arm launch:
+1. In a first terminal, run the So101 Publisher arm launch :
 ```bash
 ros2 launch so101_robot_bringup publisher_arm.launch.py namespace:=leader use_rviz:=true
 ```
 
-2. In a second terminal, run the So101 Subscriber arm launch:
+2. In a second terminal, run the So101 Subscriber arm launch :
 ```bash
 ros2 launch so101_robot_bringup subscriber_arm.launch.py namespace:=follower use_rviz:=true
 ```
 
-3. In a third terminal, run the Publisher-Subscriber bridge executable:
+3. In a third terminal, run the Publisher-Subscriber bridge executable :
 ```bash
 ros2 run so101_robot_bringup bridge_forward
 ```
