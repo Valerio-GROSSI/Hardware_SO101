@@ -7,8 +7,8 @@ LeRobotJointStateSubscriber::LeRobotJointStateSubscriber()
  : Node("lerobot_subscriber")
 {
     // Déclaration des paramètres
-    declare_parameter<std::string>("robot_name", "so101_follower");
-    declare_parameter<std::string>("port", "/dev/ttyACM0");
+    declare_parameter<std::string>("robot_name", "so101_follower"); // so101_leader | adapter en ligne de commande
+    declare_parameter<std::string>("port", "/dev/ttyACM1"); // adapter en ligne de commande
     declare_parameter<bool>("recalibrate", false);
 
     // Lecture des paramètres

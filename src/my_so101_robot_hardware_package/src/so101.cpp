@@ -1,5 +1,5 @@
 #include "my_so101_robot_hardware_package/so101.hpp"
-
+#include <fstream>
 
 // #include <utility>
 // #include <stdexcept>
@@ -34,6 +34,18 @@ SO101::SO101(std::string port, std::string name, bool recalibrate)
 
 void SO101::calibrate()
 {
+    // // AJOUT : récupérer directement l’entrée du terminal du launch
+    // std::ifstream terminal_input("/dev/tty");
+
+    // if (!terminal_input.is_open())
+    // {
+    //     throw std::runtime_error(
+    //         "Unable to open /dev/tty for calibration input.");
+    // }
+
+    // std::streambuf* original_cin_buffer = std::cin.rdbuf(
+    //     terminal_input.rdbuf());
+
     _bus = std::make_unique<FeetechMotorsBus>(
     port_,
     std::unordered_map<std::string, Motor>{
@@ -48,16 +60,15 @@ void SO101::calibrate()
 
     connect();
 
-    std::cout << "\n Running calibration of SO101-Leader\n";
-    _bus->disable_torque();
+    std::cout << "\n Running calibration of SO101-Leader\n" << std::endl;
+    // _bus->disable_torque();
 
-    for (const auto& kv : _bus->motors_) {
-        const std::string& motorName = kv.first; 
-        _bus->write("Operating_Mode", motorName, static_cast<int>(OperatingMode::POSITION));
-    }
-
+    // for (const auto& kv : _bus->motors_) {
+    //     const std::string& motorName = kv.first; 
+    //     _bus->write("Operating_Mode", motorName, static_cast<int>(OperatingMode::POSITION));
+    // }
     
-    std::cout << "Move SO101-Leader to the middle of its range of motion and press ENTER...";
+    std::cout << "Move SO101-Leader to the middle of its range of motion and press ENTER..." << std::endl;  // AJOUT : forcer l’affichage
     std::cin.get();
 
     auto homing_offset = _bus->set_half_turn_homings();
@@ -86,6 +97,9 @@ void SO101::calibrate()
     std::cout << "Calibration saved to " << calibration_path << std::endl;
 
     disconnect();
+
+    // // AJOUT : remettre std::cin dans son état initial
+    // std::cin.rdbuf(original_cin_buffer);
 }
 
 std::unordered_map<std::string, MotorCalibration> SO101::_load_calibration()

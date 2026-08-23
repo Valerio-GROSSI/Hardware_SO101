@@ -13,6 +13,13 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(
+  PROGRAMS
+    bridge_forward/bridge_forward.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME bridge_forward
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   set(ament_cmake_copyright_FOUND TRUE)

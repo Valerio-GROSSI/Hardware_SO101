@@ -51,6 +51,26 @@ hardware_interface::CallbackReturn MySo101RobotHardware::on_init(
     return hardware_interface::CallbackReturn::ERROR;
   }
 
+try
+{
+  port = info_.hardware_parameters.at("usb_port");
+  robot_name = info_.hardware_parameters.at("robot_name");
+  role = info_.hardware_parameters.at("role");
+
+  const std::string recalibrate_string = info_.hardware_parameters.at("recalibrate");
+
+  recalibrate = recalibrate_string == "true" || recalibrate_string == "1";
+}
+catch (const std::out_of_range & e)
+{
+  RCLCPP_ERROR(
+    rclcpp::get_logger("MySo101RobotHardware"),
+    "Missing hardware parameter: %s",
+    e.what());
+
+  return CallbackReturn::ERROR;
+}
+
   const std::size_t num_joints = info_.joints.size();
 
   hw_states_.resize(num_joints, std::numeric_limits<double>::quiet_NaN());
@@ -68,9 +88,9 @@ hardware_interface::CallbackReturn MySo101RobotHardware::on_init(
 hardware_interface::CallbackReturn MySo101RobotHardware::on_configure(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
-  robot_name = "so101_follower";
-  port = "/dev/ttyACM0";
-  recalibrate = false;
+  // robot_name = "so101_follower";
+  // port = "/dev/ttyACM0";
+  // recalibrate = false;
 
   robot_ = init_lerobot_arm(port, robot_name, recalibrate);
   if (!robot_)
@@ -149,6 +169,12 @@ std::vector<hardware_interface::StateInterface> MySo101RobotHardware::export_sta
 std::vector<hardware_interface::CommandInterface> MySo101RobotHardware::export_command_interfaces()
 {
   std::vector<hardware_interface::CommandInterface> command_interfaces;
+
+  if (role == "leader")
+  {
+    return command_interfaces;
+  }
+
   command_interfaces.reserve(info_.joints.size());
 
   for (std::size_t i = 0; i < info_.joints.size(); ++i)
@@ -162,44 +188,128 @@ std::vector<hardware_interface::CommandInterface> MySo101RobotHardware::export_c
   return command_interfaces;
 }
 
-hardware_interface::CallbackReturn MySo101RobotHardware::on_activate(
+hardware_interface::CallbackReturn
+MySo101RobotHardware::on_activate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
-  for (std::size_t i = 0; i < info_.joints.size(); ++i)
+  if (!robot_)
   {
-    if (std::isnan(hw_states_[i]))
-    {
-      hw_states_[i] = 0.0;
-    }
+    RCLCPP_ERROR(
+      rclcpp::get_logger("MySo101RobotHardware"),
+      "Cannot activate: robot is not initialized.");
 
-    if (std::isnan(hw_commands_[i]))
+    return hardware_interface::CallbackReturn::ERROR;
+  }
+
+  // Leader : lecture seule et moteurs libres.
+  if (role == "leader")
+  {
+    try
     {
-      hw_commands_[i] = hw_states_[i];
+      robot_->_bus->disable_torque();
+
+      RCLCPP_INFO(
+        rclcpp::get_logger("MySo101RobotHardware"),
+        "Leader activated in read-only mode; torque disabled.");
+
+      return hardware_interface::CallbackReturn::SUCCESS;
+    }
+    catch (const std::exception & e)
+    {
+      RCLCPP_ERROR(
+        rclcpp::get_logger("MySo101RobotHardware"),
+        "Failed to disable leader torque: %s",
+        e.what());
+
+      return hardware_interface::CallbackReturn::ERROR;
     }
   }
 
-  RCLCPP_INFO(
-    rclcpp::get_logger("MySo101RobotHardware"),
-    "Hardware activated.");
+  // Follower : la première commande est égale à la position
+  // mesurée afin d'éviter un déplacement brutal à l'activation.
+  for (std::size_t i = 0; i < info_.joints.size(); ++i)
+  {
+    if (!std::isfinite(hw_states_[i]))
+    {
+      RCLCPP_ERROR(
+        rclcpp::get_logger("MySo101RobotHardware"),
+        "Invalid initial position for joint '%s'.",
+        info_.joints[i].name.c_str());
 
-  return hardware_interface::CallbackReturn::SUCCESS;
+      return hardware_interface::CallbackReturn::ERROR;
+    }
+
+    hw_commands_[i] = hw_states_[i];
+  }
+
+  try
+  {
+    std::map<std::string, Value> torque_on;
+
+    torque_on["shoulder_pan"] = 1;
+    torque_on["shoulder_lift"] = 1;
+    torque_on["elbow_flex"] = 1;
+    torque_on["wrist_flex"] = 1;
+    torque_on["wrist_roll"] = 1;
+    torque_on["gripper"] = 1;
+
+    robot_->_bus->sync_write(
+      "Torque_Enable",
+      torque_on);
+
+    RCLCPP_INFO(
+      rclcpp::get_logger("MySo101RobotHardware"),
+      "Follower activated; torque enabled.");
+
+    return hardware_interface::CallbackReturn::SUCCESS;
+  }
+  catch (const std::exception & e)
+  {
+    RCLCPP_ERROR(
+      rclcpp::get_logger("MySo101RobotHardware"),
+      "Failed to enable follower torque: %s",
+      e.what());
+
+    return hardware_interface::CallbackReturn::ERROR;
+  }
 }
+
+// hardware_interface::CallbackReturn MySo101RobotHardware::on_deactivate(
+//   const rclcpp_lifecycle::State & /*previous_state*/)
+// {
+//   try
+//   {
+//     // Désactive le torque sur tous les moteurs
+//     std::map<std::string, Value> torque_off;
+//     torque_off["shoulder_pan"] = 0;
+//     torque_off["shoulder_lift"] = 0;
+//     torque_off["elbow_flex"] = 0;
+//     torque_off["wrist_flex"] = 0;
+//     torque_off["wrist_roll"] = 0;
+//     torque_off["gripper"] = 0;
+
+//     robot_->_bus->sync_write("Torque_Enable", torque_off);
+
+//     RCLCPP_INFO(
+//       rclcpp::get_logger("MySo101RobotHardware"),
+//       "Torque disabled. Robot is now free to move.");
+//   }
+//   catch (const std::exception & e)
+//   {
+//     RCLCPP_ERROR(
+//       rclcpp::get_logger("MySo101RobotHardware"),
+//       "Error disabling torque: %s", e.what());
+//   }
+
+//   return hardware_interface::CallbackReturn::SUCCESS;
+// }
 
 hardware_interface::CallbackReturn MySo101RobotHardware::on_deactivate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
   try
   {
-    // Désactive le torque sur tous les moteurs
-    std::map<std::string, Value> torque_off;
-    torque_off["shoulder_pan"] = 0;
-    torque_off["shoulder_lift"] = 0;
-    torque_off["elbow_flex"] = 0;
-    torque_off["wrist_flex"] = 0;
-    torque_off["wrist_roll"] = 0;
-    torque_off["gripper"] = 0;
-
-    robot_->_bus->sync_write("Torque_Enable", torque_off);
+    robot_->_bus->disable_torque();
 
     RCLCPP_INFO(
       rclcpp::get_logger("MySo101RobotHardware"),
@@ -209,7 +319,10 @@ hardware_interface::CallbackReturn MySo101RobotHardware::on_deactivate(
   {
     RCLCPP_ERROR(
       rclcpp::get_logger("MySo101RobotHardware"),
-      "Error disabling torque: %s", e.what());
+      "Error disabling torque: %s",
+      e.what());
+
+    return hardware_interface::CallbackReturn::ERROR;
   }
 
   return hardware_interface::CallbackReturn::SUCCESS;
@@ -242,6 +355,7 @@ hardware_interface::return_type MySo101RobotHardware::read(
     // Lire les positions actuelles depuis le robot
     // Même appel que dans publishJointStates() du publisher
     auto positions = robot_->_bus->sync_read("Present_Position");
+    auto velocities = robot_->_bus->sync_read("Present_Velocity");
 
     for (std::size_t i = 0; i < info_.joints.size(); ++i)
     {
@@ -268,10 +382,21 @@ hardware_interface::return_type MySo101RobotHardware::read(
         return hardware_interface::return_type::ERROR;
       }
 
+      // Cherche le moteur dans les vitesses lues
+      auto vel_it = velocities.find(motor_name);
+      if (vel_it == velocities.end())
+      {
+        RCLCPP_ERROR(
+          rclcpp::get_logger("MySo101RobotHardware"),
+          "Motor not found in read: %s", motor_name.c_str());
+        return hardware_interface::return_type::ERROR;
+      }
+
       // Value = std::variant<int, float> → même logique que publisher
       const float value_deg = std::get<float>(pos_it->second);
+      const int vel_step_s = std::get<int>(vel_it->second);
       hw_states_[i] = static_cast<double>(value_deg) * 3.14159265358979323846 / 180.0;
-      hw_states_vel_[i] = 0.0;
+      hw_states_vel_[i] = static_cast<double>(vel_step_s) * 2.0 * 3.14159265358979323846 / 4096.0;
     }
   }
   catch (const std::exception & e)
@@ -288,12 +413,18 @@ hardware_interface::return_type MySo101RobotHardware::read(
 hardware_interface::return_type MySo101RobotHardware::write(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
+
     if (!robot_)
     {
         RCLCPP_ERROR(
         rclcpp::get_logger("MySo101RobotHardware"),
         "Robot not initialized. Cannot write.");
         return hardware_interface::return_type::ERROR;
+    }
+
+    if (role == "leader")
+    {
+      return hardware_interface::return_type::OK;
     }
 
     static const std::map<std::string, std::string> joint_to_motor = {
@@ -341,6 +472,46 @@ hardware_interface::return_type MySo101RobotHardware::write(
     }
 
   return hardware_interface::return_type::OK;
+}
+
+hardware_interface::CallbackReturn MySo101RobotHardware::on_shutdown(
+  const rclcpp_lifecycle::State & /*previous_state*/)
+{
+  if (!robot_ || !robot_->is_connected())
+  {
+    return hardware_interface::CallbackReturn::SUCCESS;
+  }
+
+  try
+  {
+    std::map<std::string, Value> torque_off = {
+      {"shoulder_pan", 0},
+      {"shoulder_lift", 0},
+      {"elbow_flex", 0},
+      {"wrist_flex", 0},
+      {"wrist_roll", 0},
+      {"gripper", 0}
+    };
+
+    robot_->_bus->sync_write("Torque_Enable", torque_off);
+
+    RCLCPP_INFO(
+      rclcpp::get_logger("MySo101RobotHardware"),
+      "Torque disabled during hardware shutdown.");
+
+    robot_->disconnect();
+
+    return hardware_interface::CallbackReturn::SUCCESS;
+  }
+  catch (const std::exception & e)
+  {
+    RCLCPP_ERROR(
+      rclcpp::get_logger("MySo101RobotHardware"),
+      "Error during hardware shutdown: %s",
+      e.what());
+
+    return hardware_interface::CallbackReturn::ERROR;
+  }
 }
 
 }  // namespace my_so101_robot_control_package

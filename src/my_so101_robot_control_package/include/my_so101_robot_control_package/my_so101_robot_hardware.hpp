@@ -48,6 +48,12 @@ public:
   hardware_interface::return_type write(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
+  hardware_interface::CallbackReturn on_shutdown(
+  const rclcpp_lifecycle::State & previous_state) override;
+
+  // hardware_interface::CallbackReturn on_error(
+  // const rclcpp_lifecycle::State & previous_state) override;  
+
 private:
   std::shared_ptr<SO101> init_lerobot_arm(
     const std::string & port,
@@ -65,6 +71,7 @@ private:
   // ===== Config =====
   std::string robot_name;
   std::string port;
+  std::string role;
   bool recalibrate{false};
 };
 

@@ -35,7 +35,7 @@ def generate_launch_description():
         ],
     )
 
-    # 🎮 RViz (interface)
+    # RViz (interface)
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",

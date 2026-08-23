@@ -7,8 +7,8 @@ LeRobotJointStatePublisher::LeRobotJointStatePublisher()
  : Node("le_robot_joint_state_publisher")
 {
     // Déclaration des paramètres
-    declare_parameter<std::string>("robot_name", "so101_follower"); //so101_leader
-    declare_parameter<std::string>("port", "/dev/ttyACM0");
+    declare_parameter<std::string>("robot_name", "so101_leader"); // so101_follower | adapter en ligne de commande
+    declare_parameter<std::string>("port", "/dev/ttyACM0"); // adapter en ligne de commande
     declare_parameter<bool>("recalibrate", false);
 
     // Lecture des paramètres
