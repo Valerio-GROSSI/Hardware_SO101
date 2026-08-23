@@ -68,20 +68,19 @@ For testing the ROS 2 control pipeline without real hardware nor launching a sim
 
 2. In a second terminal, send a position command:
 ```bash
-ros2 topic pub --once forward_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.1, 0.0, 0.1, 0.0, 0.1, 0.0]}"
+ros2 topic pub --once follower/forward_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]}"
 ```
 
-If you want to use ros2_control joint_state_controller controller:
-3. In a third terminal:
+To use the ROS 2 Control `joint_trajectory_controller` instead:
 ```bash
 ros2 control switch_controllers --controller-manager /follower/controller_manager --deactivate forward_position_controller --activate joint_trajectory_controller
 ```
 ```bash
-ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory /
-"{joint_names:['joint1','joint2','joint3','joint4','joint5','joint6'],points: [{positions: [0.15, 0.0, 0.0, 0.0, 0.0, 0.0],time_from_start: {sec: 5, nanosec: 0}}]}"
+ros2 topic pub --once follower/joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory /
+"{joint_names:['joint1','joint2','joint3','joint4','joint5','joint6'],points: [{positions: [0.3, 0.1, 0.2, 0.3, 0.1, 0.2],time_from_start: {sec: 5, nanosec: 0}}]}"
 ```
 
-### Control of the Subscription Arm using Moveit motion plnning
+### Control of the Robotic Arm using Moveit motion plannig
 
 1. Launch MoveIt and RViz interface for motion planning:
 ```bash
