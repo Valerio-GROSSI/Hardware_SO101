@@ -8,17 +8,32 @@ The robot can be controlled using standard ros2_control controllers, teleoperate
 
 ## How to Run
 
-1. Calibrate the So101 Leader arm :
+# Calibration
+
+_. Calibrate the So101 Leader arm :
 ```bash
 ros2 run so101_robot_hardware my_so101_ros2_calib_executable --ros-args -p robot_name:=so101_leader port:=/dev/ttyACM0
 ```
 
-2. Calibrate the So101 Follower arm :
+_. Calibrate the So101 Follower arm :
 ```bash
-ros2 run so101_robot_hardware my_so101_ros2_calib_executable
+ros2 run so101_robot_hardware my_so101_ros2_calib_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
 
-2. Launch ros2_control and controllers :
+# Script-Based Leader–Follower Teleoperation (without ros2_control)
+
+1. In a first terminal, Run the So101 Publisher arm :
+```bash
+ros2 run so101_robot_hardware my_so101_ros2_pub_executable --ros-args -p robot_name:=so101_leader port:=/dev/ttyACM0 
+```
+2. In a second terminal, Run the So101 Subscriber arm :
+```bash
+ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
+```
+
+--ros-args -p recalibrate:=true pour recalibrer en plus au début de l'exécution
+
+3. Launch ros2_control and controllers :
 ```bash
 ros2 launch so101_robot_bringup my_so101_robot.launch.py
 ```
