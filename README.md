@@ -90,7 +90,7 @@ ros2 launch so101_robot_moveit moveit_real.launch.py
 
 2. Utiliser l'interface RVIZ pour génerer les commandes (via group_state)
 
-# Results
+## Results
 
 <br>
 
