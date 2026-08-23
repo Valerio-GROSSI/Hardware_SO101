@@ -90,7 +90,7 @@ ros2 topic pub --once follower/joint_trajectory_controller/joint_trajectory traj
 
 <br>
 
-### Control of the Robotic Arm using Moveit motion plannig
+### Control of the Robotic Arm using Moveit motion planning
 
 1. Launch MoveIt and RViz interface for motion planning:
 ```bash
