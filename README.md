@@ -37,12 +37,12 @@ ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_n
 
 ### Direct ROS 2 Leader–Follower Teleoperation - (ros2_control-based)
 
-1. In a first terminal, run the So101 Publisher arm launch :
+1. In a first terminal, run the So101 Publisher arm launch file :
 ```bash
 ros2 launch so101_robot_bringup publisher_arm.launch.py namespace:=leader use_rviz:=true
 ```
 
-2. In a second terminal, run the So101 Subscriber arm launch :
+2. In a second terminal, run the So101 Subscriber arm launch file :
 ```bash
 ros2 launch so101_robot_bringup subscriber_arm.launch.py namespace:=follower use_rviz:=true
 ```
