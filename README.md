@@ -22,7 +22,7 @@ Calibrate the So101 Follower arm :
 ros2 run so101_robot_hardware my_so101_ros2_calib_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
 
-### Script-Based Leader–Follower Teleoperation - without ros2_control
+### Script-Based Leader–Follower Teleoperation - (without ros2_control)
 
 1. In a first terminal, run the So101 Publisher arm executable:
 ```bash
@@ -35,7 +35,7 @@ ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_n
 
 ``` --ros-args -p recalibrate:=true ``` to recalibrate at the start of execution as well
 
-### Direct ROS 2 Teleoperation - ros2_control-Based
+### Direct ROS 2 Teleoperation - (ros2_control-based)
 
 1. In a first terminal, run the So101 Publisher arm launch:
 ```bash
