@@ -1,8 +1,10 @@
-# Robot Pose Guidance with MoveIt Motion Planning
+# Robot Pose Guidance (So101 Robotic Arm)
 
-This project focuses on controlling a 6-DoF robotic arm using MoveIt for motion planning, with the goal of developing a complete pipeline for trajectory execution and manipulation tasks.
+This project focuses on controlling a 6-DoF So101 robotic arm, referred to as the Follower arm, using several methods. Its goal is to provide a complete pipeline for trajectory execution and manipulation tasks.
 
-The robot used in this project is the So101 arm from LeRobot. The hardware interface follows the original LeRobot design, but has been entirely reimplemented in C++ rather than Python.
+The So101 robot is part of the LeRobot ecosystem. Its hardware interface follows the original LeRobot design but has been fully reimplemented in C++ instead of Python and integrated with ros2_control.
+
+The robot can be controlled using standard ros2_control controllers, teleoperated through a Leader arm, or driven by motion plans generated with MoveIt 2.
 
 ## How to Run
 
