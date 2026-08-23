@@ -64,8 +64,6 @@ ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true namespac
 ```
 
 This launch file can be runned without real hardware, in simulation, with either Gazebo Sim (`gz_sim`) or Gazebo Classic (`gazebo_classic`).  
-In this case, make sure to keep `use_sim` set to true.  
-
 For testing the ROS 2 control pipeline without real hardware nor launching a simulator, set `using mock_hardware` to true.  
 
 2. In a second terminal, issue a movement command:
