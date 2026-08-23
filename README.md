@@ -54,7 +54,7 @@ ros2 run so101_robot_bringup bridge_forward
 
 It uses the Publisher arm’s joint states as position commands for the Subscriber arm (via `forward_command_controller`).  
 The `namespace` must match the arm model. Either model can be configured to act as the Publisher or Subscriber arm.  
-Leave the `recalibrate` parameter set to `false` (default value), because recalibration implies `std::cin.get()`, not supported by ROS 2 launch setup.
+`recalibrate` must be set to `false` (default value), because recalibration implies `std::cin.get()`, not supported by ROS 2 launch setup.
 
 ### Control of the Subscription Arm using standard ros2_control controllers
 
