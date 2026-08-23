@@ -101,7 +101,7 @@ ros2 launch so101_robot_moveit moveit_real.launch.py
 
 <br>
 
-### Example output - Control of the Robotic Arm using Moveit motion plannig
+### Example output - Control of the Robotic Arm using Moveit motion planning
 <br>
 
 <p align="center">
