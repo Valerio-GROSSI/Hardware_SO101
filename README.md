@@ -68,23 +68,23 @@ Either model can be configured to act as the Publisher or Subscriber arm, use `a
 
 1. In a first terminal, run the So101 Subscriber arm launch file :
 ```bash
-ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true namespace:=follower use_sim:=false
+ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true
 ```
 
-This launch file can be run without real hardware, in simulation, with either Gazebo Sim (`gz_sim`) or Gazebo Classic (`gazebo_classic`).  
-For testing ROS 2 control pipeline without real hardware nor launching a simulator, set `use_mock_hardware` to true.  
+This launch file can be run without real hardware, in simulation (`use_sim`), with either Gazebo Sim (`gz_sim`) or Gazebo Classic (`gazebo_classic`).  
+For testing ROS 2 control pipeline without real hardware nor launching a simulator, set `use_mock_hardware` to true.
 
 2. In a second terminal, send a position command:
 ```bash
-ros2 topic pub --once follower/forward_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]}"
+ros2 topic pub --once forward_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]}"
 ```
 
 To use the ROS 2 control `joint_trajectory_controller` instead:
 ```bash
-ros2 control switch_controllers --controller-manager /follower/controller_manager --deactivate forward_position_controller --activate joint_trajectory_controller
+ros2 control switch_controllers --controller-manager /controller_manager --deactivate forward_position_controller --activate joint_trajectory_controller
 ```
 ```bash
-ros2 topic pub --once follower/joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory /
+ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory /
 "{joint_names: ['joint1','joint2','joint3','joint4','joint5','joint6'], points: [{positions: [0.3, 0.1, 0.2, 0.3, 0.1, 0.2], time_from_start: {sec: 5, nanosec: 0}}]}"
 ```
 
