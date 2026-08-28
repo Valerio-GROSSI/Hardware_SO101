@@ -104,7 +104,8 @@ ros2 launch my_so101_robot_moveit_package move_group.launch.py
 
 3. Use the RViz interface to generate commands (via group_state)
 
-4.```bash
+4.
+```bash
 ros2 action send_goal --feedback \
   /move_action \
   moveit_msgs/action/MoveGroup \
