@@ -92,12 +92,148 @@ ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_ms
 
 ### Control of the Robotic Arm using Moveit motion planning
 
-1. Launch MoveIt and RViz interface for motion planning:
+1. 
 ```bash
-ros2 launch so101_robot_moveit moveit_real.launch.py
+ros2 launch so101_robot_bringup subscriber_arm.launch.py use_moveit:=true
 ```
 
-2. Use the RViz interface to generate commands (via group_state)
+2.
+```bash
+ros2 launch my_so101_robot_moveit_package move_group.launch.py
+```
+
+3. Use the RViz interface to generate commands (via group_state)
+
+4.```bash
+ros2 action send_goal --feedback \
+  /move_action \
+  moveit_msgs/action/MoveGroup \
+  "{
+    request: {
+      group_name: arm,
+      num_planning_attempts: 10,
+      allowed_planning_time: 5.0,
+      max_velocity_scaling_factor: 0.05,
+      max_acceleration_scaling_factor: 0.05,
+      start_state: {
+        is_diff: true
+      },
+      goal_constraints: [
+        {
+          name: joint_goal,
+          joint_constraints: [
+            {
+              joint_name: joint1,
+              position: 0.0,
+              tolerance_above: 0.01,
+              tolerance_below: 0.01,
+              weight: 1.0
+            },
+            {
+              joint_name: joint2,
+              position: -1.0,
+              tolerance_above: 0.01,
+              tolerance_below: 0.01,
+              weight: 1.0
+            },
+            {
+              joint_name: joint3,
+              position: 1.0,
+              tolerance_above: 0.01,
+              tolerance_below: 0.01,
+              weight: 1.0
+            },
+            {
+              joint_name: joint4,
+              position: 0.5,
+              tolerance_above: 0.01,
+              tolerance_below: 0.01,
+              weight: 1.0
+            },
+            {
+              joint_name: joint5,
+              position: 0.0,
+              tolerance_above: 0.01,
+              tolerance_below: 0.01,
+              weight: 1.0
+            }
+          ]
+        }
+      ]
+    },
+    planning_options: {
+      plan_only: false,
+      look_around: false,
+      replan: false
+    }
+  }"
+```
+
+5.
+```bash
+ros2 action send_goal --feedback \
+  /move_action \
+  moveit_msgs/action/MoveGroup \
+  "{
+    request: {
+      group_name: arm,
+      num_planning_attempts: 20,
+      allowed_planning_time: 10.0,
+      max_velocity_scaling_factor: 0.05,
+      max_acceleration_scaling_factor: 0.05,
+      start_state: {
+        is_diff: true
+      },
+      goal_constraints: [
+        {
+          name: tcp_position,
+          position_constraints: [
+            {
+              header: {
+                frame_id: base
+              },
+              link_name: gripperframe,
+              target_point_offset: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0
+              },
+              constraint_region: {
+                primitives: [
+                  {
+                    type: 2,
+                    dimensions: [0.005]
+                  }
+                ],
+                primitive_poses: [
+                  {
+                    position: {
+                      x: 0.20,
+                      y: 0.00,
+                      z: 0.15
+                    },
+                    orientation: {
+                      x: 0.0,
+                      y: 0.0,
+                      z: 0.0,
+                      w: 1.0
+                    }
+                  }
+                ]
+              },
+              weight: 1.0
+            }
+          ]
+        }
+      ]
+    },
+    planning_options: {
+      plan_only: true,
+      look_around: false,
+      replan: false
+    }
+  }"
+```
 
 <br>
 
