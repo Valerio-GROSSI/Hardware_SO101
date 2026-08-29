@@ -43,7 +43,7 @@ ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_n
  
 Either model can be configured to act as the Publisher or Subscriber arm, just swap `robot_name` values.  
 
-``` --ros-args -p recalibrate:=true ``` to recalibrate at the start of execution as well. 
+``` --ros-args -p recalibrate:=true ``` to recalibrate the arm at the start of execution as well. 
 
 <br>
 
