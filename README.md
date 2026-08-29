@@ -114,13 +114,11 @@ ros2 launch my_so101_robot_moveit_package move_group.launch.py
 ros2 launch my_so101_robot_moveit_package moveit_rviz.launch.py
 ```
 
-4. Use the RViz interface to plan and execute commands (via the group defined)
+4. Use the RViz interface to plan and execute commands (via the groups defined)
 
 5. To send a joint command :
 ```bash
-ros2 action send_goal --feedback \
-  /move_action \
-  moveit_msgs/action/MoveGroup \
+ros2 action send_goal --feedback /move_action moveit_msgs/action/MoveGroup \
   "{
     request: {
       group_name: arm,
@@ -182,11 +180,9 @@ ros2 action send_goal --feedback \
   }"
 ```
 
-5. To send a Cartesian position of the TCP:
+5. To send a Cartesian position of the TCP :
 ```bash
-ros2 action send_goal --feedback \
-  /move_action \
-  moveit_msgs/action/MoveGroup \
+ros2 action send_goal --feedback /move_action moveit_msgs/action/MoveGroup \
   "{
     request: {
       group_name: arm,
