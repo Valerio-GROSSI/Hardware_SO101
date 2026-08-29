@@ -36,7 +36,7 @@ ros2 run so101_robot_hardware my_so101_ros2_calib_executable --ros-args -p robot
 ```bash
 ros2 run so101_robot_hardware my_so101_ros2_pub_executable --ros-args -p robot_name:=so101_leader port:=/dev/ttyACM0 
 ```
-2. In a second terminal, run the So101 Subscriber arm executable:
+2. In a second terminal, run the So101 Subscriber arm executable :
 ```bash
 ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
