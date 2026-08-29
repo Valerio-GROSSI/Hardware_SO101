@@ -81,12 +81,12 @@ ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true
 This launch file can be run without real hardware in simulation (parameter bool `use_sim`), with either Gazebo Sim (parameter bool `gz_sim`) or Gazebo Classic (parameter bool `gazebo_classic`).  
 For testing ROS 2 control pipeline without real hardware nor launching a simulator, use parameter bool `use_mock_hardware`.
 
-2. In a second terminal, send a position command:
+2. In a second terminal, send a position command :
 ```bash
 ros2 topic pub --once forward_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]}"
 ```
 
-To use the ROS 2 control `joint_trajectory_controller` instead:
+To use the ROS 2 control `joint_trajectory_controller` instead :
 ```bash
 ros2 control switch_controllers --controller-manager /controller_manager --deactivate forward_position_controller --activate joint_trajectory_controller
 ```
@@ -104,12 +104,12 @@ ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_ms
 ros2 launch so101_robot_bringup subscriber_arm.launch.py use_moveit:=true
 ```
 
-2. In a second terminal, start the MoveIt 2 move_group node:
+2. In a second terminal, start the MoveIt 2 move_group node :
 ```bash
 ros2 launch my_so101_robot_moveit_package move_group.launch.py
 ```
 
-3. In a third terminal, launch RViz with the MoveIt 2 Motion Planning plugin:
+3. In a third terminal, launch RViz with the MoveIt 2 Motion Planning plugin :
 ```bash
 ros2 launch my_so101_robot_moveit_package moveit_rviz.launch.py
 ```
