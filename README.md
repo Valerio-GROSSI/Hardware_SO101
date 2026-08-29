@@ -41,7 +41,7 @@ ros2 run so101_robot_hardware my_so101_ros2_pub_executable --ros-args -p robot_n
 ros2 run so101_robot_hardware my_so101_ros2_sub_executable --ros-args -p robot_name:=so101_follower port:=/dev/ttyACM1
 ```
 
-``` --ros-args -p recalibrate:=true ``` to recalibrate at the start of execution as well
+``` --ros-args -p recalibrate:=true ``` to recalibrate at the start of execution as well.  
 Either model can be configured to act as the Publisher or Subscriber arm, just swap `robot_name` values
 
 <br>
