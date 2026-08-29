@@ -1,12 +1,16 @@
 # Robot Pose Guidance (So101 Robotic Arm)
 
-This project focuses on controlling a 6-DoF So101 robotic arm, referred to as the Follower arm, using several methods. Its goal is to provide a complete pipeline for trajectory execution and manipulation tasks.
+This project focuses on controlling the So101 Follower, a 6-DoF robotic arm, using several methods. It provides a complete pipeline for trajectory execution and (currently under development) manipulation tasks.
 
-The So101 robot is part of the LeRobot ecosystem. Its hardware interface follows the original LeRobot design but has been fully reimplemented in C++ instead of Python and integrated with ros2_control.
+The So101 robot is part of the LeRobot ecosystem. The hardware interface used in this project follows the original LeRobot design but has been fully reimplemented in C++ instead of Python and integrated with ros2_control.
 
-The robot can be controlled using standard ros2_control controllers, teleoperated through a Leader arm, or driven by motion plans generated with MoveIt 2.
+The robot can be controlled using standard ros2_control controllers, teleoperated using an SO-101 Leader arm, or driven by motion plans generated with MoveIt 2 from either joint-space targets or Cartesian end-effector targets.
 
-One of the project’s next objectives is to train the real robot to perform manipulation tasks, such as pick-and-place, using Isaac Lab for imitation learning and reinforcement learning, as well as the LeRobot framework.
+One of the project’s current objective is to train the robot to perform manipulation tasks, such as pick-and-place using several approaches:
+  - Detecting objects from camera images using an AI-based perception model, determining a Cartesian end-effector goal, and planning the corresponding trajectory with MoveIt 2.
+  - Training reinforcement-learning policies in simulation using Isaac Lab and RL libraries, then deploying the trained policies on the physical robot.
+  - Recording demonstrations in simulation with Isaac Lab, augmenting the demonstration dataset using Isaac Lab Mimic, training a policy with NVIDIA Isaac GR00T, and deploying it on the physical robot.
+  - Recording real-world demonstrations with LeRobot, training imitation-learning policies from the collected dataset, and deploying them on the physical robot.
 
 <br>
 
