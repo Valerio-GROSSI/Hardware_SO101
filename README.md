@@ -99,19 +99,24 @@ ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_ms
 
 ### Control of the Robotic Arm using Moveit motion planning
 
-1. 
+1. In a first terminal, run the So101 Subscriber arm launch file :
 ```bash
 ros2 launch so101_robot_bringup subscriber_arm.launch.py use_moveit:=true
 ```
 
-2.
+2.In a second terminal, start the MoveIt 2 move_group node:
 ```bash
 ros2 launch my_so101_robot_moveit_package move_group.launch.py
 ```
 
-3. Use the RViz interface to generate commands (via group_state)
+3. In a third terminal, launch RViz with the MoveIt 2 Motion Planning plugin:
+```bash
+ros2 launch my_so101_robot_moveit_package moveit_rviz.launch.py
+```
 
-4.
+4. Use the RViz interface to plan and execute commands (via the group defined)
+
+5. To send a joint command :
 ```bash
 ros2 action send_goal --feedback \
   /move_action \
@@ -177,7 +182,7 @@ ros2 action send_goal --feedback \
   }"
 ```
 
-5.
+5. To send a Cartesian position of the TCP:
 ```bash
 ros2 action send_goal --feedback \
   /move_action \
