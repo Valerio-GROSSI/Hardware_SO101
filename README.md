@@ -104,7 +104,7 @@ ros2 topic pub --once joint_trajectory_controller/joint_trajectory trajectory_ms
 ros2 launch so101_robot_bringup subscriber_arm.launch.py use_moveit:=true
 ```
 
-2.In a second terminal, start the MoveIt 2 move_group node:
+2. In a second terminal, start the MoveIt 2 move_group node:
 ```bash
 ros2 launch my_so101_robot_moveit_package move_group.launch.py
 ```
