@@ -3,7 +3,7 @@
 
     <xacro:macro name="so101_ros2_control" params="
                  name:=so101
-                 prefix
+                 prefix:=''
                  use_sim:=false
                  sim_gazebo:=false
                  sim_gazebo_classic:=false
@@ -14,6 +14,7 @@
                  usb_port:=/dev/ttyACM0
                  recalibrate:=false
                  arm:=follower
+                 namespace:=''
                  role:=follower
                  ">
 
@@ -26,7 +27,7 @@
                     filename="libgazebo_ros2_control.so"
                     name="gazebo_ros2_control">
                     <ros>
-                        <namespace>/${arm}</namespace>
+                        <namespace>/${namespace}</namespace>
                     </ros>
                     <parameters>${controller_config_file}</parameters>
                 </plugin>
@@ -40,7 +41,7 @@
                     filename="gz_ros2_control-system"
                     name="gz_ros2_control::GazeboSimROS2ControlPlugin">
                     <ros>
-                        <namespace>/${arm}</namespace>
+                        <namespace>/${namespace}</namespace>
                     </ros>
                     <parameters>${controller_config_file}</parameters>
                 </plugin>

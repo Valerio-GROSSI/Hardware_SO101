@@ -1,7 +1,7 @@
 from moveit_configs_utils import MoveItConfigsBuilder
-from moveit_configs_utils.launches import generate_spawn_controllers_launch
+from moveit_configs_utils.launches import generate_moveit_rviz_launch
 
 
 def generate_launch_description():
     moveit_config = MoveItConfigsBuilder("so101", package_name="my_so101_robot_moveit_package").to_moveit_configs()
-    return generate_spawn_controllers_launch(moveit_config)
+    return generate_moveit_rviz_launch(moveit_config)

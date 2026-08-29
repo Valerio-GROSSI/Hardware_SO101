@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>my_so101_robot_moveit_package</name>
+  <name>so101_robot_moveit</name>
   <version>0.3.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the so101 with the MoveIt Motion Planning Framework
   </description>
-  <maintainer email="todo@todo.com">todo</maintainer>
+  <maintainer email="valerio1.grossi@gmail.com">valerio</maintainer>
 
   <license>BSD</license>
 
@@ -14,7 +14,7 @@
   <url type="bugtracker">https://github.com/ros-planning/moveit2/issues</url>
   <url type="repository">https://github.com/ros-planning/moveit2</url>
 
-  <author email="todo@todo.com">todo</author>
+  <author email="valerio1.grossi@gmail.com">valerio</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

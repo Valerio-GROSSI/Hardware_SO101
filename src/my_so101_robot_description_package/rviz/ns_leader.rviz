@@ -4,7 +4,9 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /TF1/Frames1
+        - /Global Options1
+        - /RobotModel1/Status1
+        - /TF1/Status1
       Splitter Ratio: 0.5198863744735718
     Tree Height: 719
   - Class: rviz_common/Selection
@@ -56,7 +58,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /robot_description
+        Value: /leader/robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -115,7 +117,7 @@ Visualization Manager:
         Inertia: false
         Mass: false
       Name: RobotModel
-      TF Prefix: ""
+      TF Prefix: leader
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -124,25 +126,25 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        base:
+        leader/base:
           Value: true
-        baseframe:
+        leader/baseframe:
+          Value: false
+        leader/gripper:
+          Value: false
+        leader/gripperframe:
+          Value: false
+        leader/lower_arm:
+          Value: false
+        leader/moving_jaw_so101_v1:
+          Value: false
+        leader/shoulder:
+          Value: false
+        leader/upper_arm:
+          Value: false
+        leader/world:
           Value: true
-        gripper:
-          Value: false
-        gripperframe:
-          Value: true
-        lower_arm:
-          Value: false
-        moving_jaw_so101_v1:
-          Value: false
-        shoulder:
-          Value: false
-        upper_arm:
-          Value: false
-        world:
-          Value: false
-        wrist:
+        leader/wrist:
           Value: false
       Marker Scale: 1
       Name: TF
@@ -150,25 +152,25 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        world:
-          base:
-            baseframe:
+        leader/world:
+          leader/base:
+            leader/baseframe:
               {}
-            shoulder:
-              upper_arm:
-                lower_arm:
-                  wrist:
-                    gripper:
-                      gripperframe:
+            leader/shoulder:
+              leader/upper_arm:
+                leader/lower_arm:
+                  leader/wrist:
+                    leader/gripper:
+                      leader/gripperframe:
                         {}
-                      moving_jaw_so101_v1:
+                      leader/moving_jaw_so101_v1:
                         {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base
+    Fixed Frame: leader/world
     Frame Rate: 30
   Name: root
   Tools:
@@ -211,25 +213,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.5922341346740723
+      Distance: 1.639100432395935
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.036477312445640564
-        Y: -0.042617879807949066
-        Z: 0.14232873916625977
+        X: -0.10112747550010681
+        Y: -0.05153150483965874
+        Z: 0.13833439350128174
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.48479676246643066
+      Pitch: 0.5897966623306274
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.035396933555603
+      Yaw: 1.9053961038589478
     Saved: ~
 Window Geometry:
   Displays:

@@ -7,12 +7,13 @@
   <xacro:arg name="sim_gazebo" default="true"/>
   <xacro:arg name="sim_gazebo_classic" default="false"/>
   <xacro:arg name="use_mock_hardware" default="false"/>
-  <xacro:arg name="mock_sensor_commands" default="false"/>
+  <xacro:arg name="mock_sensor_commands" default="true"/>
   <xacro:arg name="initial_positions_file" default="$(find so101_robot_description)/urdf/initial_positions.yaml"/>
-  <xacro:arg name="controller_config_file" default="$(find so101_robot_bringup)/config/controllers.yaml"/>
+  <xacro:arg name="controller_config_file" default="$(find so101_robot_bringup)/config/sub_controllers.yaml"/>
   <xacro:arg name="usb_port" default="/dev/ttyACM0"/>
   <xacro:arg name="recalibrate" default="false"/>
   <xacro:arg name="arm" default="follower"/>
+  <xacro:arg name="namespace" default=""/>
   <xacro:arg name="role" default="follower"/>
 
   <xacro:include filename="$(find so101_robot_description)/urdf/my_so101_robot/my_so101_robot_macro.xacro" />
@@ -37,6 +38,7 @@
     usb_port="$(arg usb_port)"
     recalibrate="$(arg recalibrate)"
     arm="$(arg arm)"
+    namespace="$(arg namespace)"
     role="$(arg role)"
   />
 

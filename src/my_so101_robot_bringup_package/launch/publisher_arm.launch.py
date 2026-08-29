@@ -14,6 +14,8 @@ def launch_setup(context, *args, **kwargs):
     usb_port = LaunchConfiguration("usb_port")
     recalibrate = LaunchConfiguration("recalibrate")
 
+    arm = LaunchConfiguration("arm")
+    arm_value = arm.perform(context)
     namespace = LaunchConfiguration("namespace")
     namespace_value = LaunchConfiguration("namespace").perform(context)    
     use_rviz = LaunchConfiguration("use_rviz")
@@ -46,7 +48,9 @@ def launch_setup(context, *args, **kwargs):
                 " recalibrate:=",
                 recalibrate,
                 " arm:=",
-                namespace_value,
+                arm,
+                " namespace:=",
+                namespace,
                 " role:=leader", # publisher_arm.launch.py donc le comportement hardware du bras est celui d'un leader (torque désenclenché) et command_interfaces non existants, que ce dernier soit un leader comme follower
             ]
         ),
@@ -55,7 +59,14 @@ def launch_setup(context, *args, **kwargs):
 
     robot_description = {"robot_description": robot_description_content}
 
-    rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"{namespace_value}.rviz"])
+    if namespace_value:
+        rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"ns_{arm_value}.rviz"])
+    else:
+        rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"{arm_value}.rviz"])
+
+    robot_state_publisher_parameters = [robot_description]
+    if namespace_value:
+        robot_state_publisher_parameters.append({"frame_prefix": f"{namespace_value}/"})
 
     robot_state_pub_node = Node(
         package="robot_state_publisher",
@@ -63,9 +74,7 @@ def launch_setup(context, *args, **kwargs):
         output="both",
         namespace=namespace,
         name="robot_state_publisher",
-        parameters=[robot_description,
-                    {"frame_prefix": f"{namespace_value}/"},
-                   ],
+        parameters=robot_state_publisher_parameters,
     )
 
     ros2_control_node = Node(
@@ -97,9 +106,13 @@ def launch_setup(context, *args, **kwargs):
         )
     )
 
-    joint_state_publisher_node = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
+    joint_state_publisher_gui_node = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        namespace=namespace,
+        name="joint_state_publisher_gui",
+        output="screen",
+        parameters=[robot_description],
     )
 
     rviz_node = Node(
@@ -115,7 +128,7 @@ def launch_setup(context, *args, **kwargs):
         robot_state_pub_node,
         ros2_control_node,
         delay_joint_state_broadcaster_spawner,
-        # joint_state_broadcaster_spawner,
+        # joint_state_publisher_gui_node,
         rviz_node,
     ]
 
@@ -125,7 +138,8 @@ def generate_launch_description():
     mock_sensor_commands_arg = DeclareLaunchArgument("mock_sensor_commands", default_value="true", description="Start robot with mock sensor commands.")
     usb_port_arg = DeclareLaunchArgument("usb_port", default_value="/dev/ttyACM0")
     recalibrate_arg = DeclareLaunchArgument("recalibrate", default_value="false")
-    namespace_arg = DeclareLaunchArgument("namespace", default_value="leader", choices=["leader", "follower"], description="Modèle du bras")
+    arm_arg = DeclareLaunchArgument("arm", default_value="leader", choices=["leader", "follower"], description="Modèle du bras")
+    namespace_arg = DeclareLaunchArgument("namespace", default_value="", description="ROS namespace; empty means root namespace",)
     use_rviz_arg = DeclareLaunchArgument("use_rviz", default_value="false")
 
     return LaunchDescription([
@@ -133,6 +147,7 @@ def generate_launch_description():
         mock_sensor_commands_arg,
         usb_port_arg,
         recalibrate_arg,
+        arm_arg,
         namespace_arg,
         use_rviz_arg,
         OpaqueFunction(function = launch_setup),

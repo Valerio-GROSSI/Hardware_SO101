@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(my_so101_robot_moveit_package)
+project(so101_robot_moveit)
 
 find_package(ament_cmake REQUIRED)
 

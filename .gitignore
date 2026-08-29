@@ -1,5 +1,5 @@
 # ignore tout
-*
+/*
 
 # sauf src
 !src/
