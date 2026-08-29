@@ -4,7 +4,7 @@ This project focuses on controlling the So101 Follower, a 6-DoF robotic arm, usi
 
 The So101 robot is part of the LeRobot ecosystem. The hardware interface used in this project follows the original LeRobot design but has been fully reimplemented in C++ instead of Python and integrated with ros2_control.
 
-The robot can be controlled using standard ros2_control controllers, teleoperated using an SO-101 Leader arm, or driven by motion plans generated with MoveIt 2 from either joint-space targets or Cartesian end-effector targets.
+The robot can be controlled using standard ros2_control controllers, teleoperated using an So101 Leader arm, or driven by motion plans generated with MoveIt 2 from either joint-space targets or Cartesian end-effector targets.
 
 One of the project’s current objective is to train the robot to perform manipulation tasks, such as pick-and-place using several approaches:
   - Detecting objects from camera images using an AI-based perception model, in order to determine a Cartesian end-effector goal, and planning the corresponding trajectory with MoveIt 2.
