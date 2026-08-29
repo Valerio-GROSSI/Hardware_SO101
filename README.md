@@ -78,8 +78,8 @@ Make sure to preserve the `namespace` parameter at these exact values, it is use
 ros2 launch so101_robot_bringup subscriber_arm.launch.py use_rviz:=true
 ```
 
-This launch file can be run without real hardware, in simulation (`use_sim`), with either Gazebo Sim (`gz_sim`) or Gazebo Classic (`gazebo_classic`).  
-For testing ROS 2 control pipeline without real hardware nor launching a simulator, set `use_mock_hardware` to true.
+This launch file can be run without real hardware in simulation (parameter bool `use_sim`), with either Gazebo Sim (parameter bool `gz_sim`) or Gazebo Classic (parameter bool `gazebo_classic`).  
+For testing ROS 2 control pipeline without real hardware nor launching a simulator, use parameter bool `use_mock_hardware`.
 
 2. In a second terminal, send a position command:
 ```bash
