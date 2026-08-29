@@ -7,7 +7,7 @@ The So101 robot is part of the LeRobot ecosystem. The hardware interface used in
 The robot can be controlled using standard ros2_control controllers, teleoperated using an SO-101 Leader arm, or driven by motion plans generated with MoveIt 2 from either joint-space targets or Cartesian end-effector targets.
 
 One of the project’s current objective is to train the robot to perform manipulation tasks, such as pick-and-place using several approaches:
-  - Detecting objects from camera images using an AI-based perception model, determining a Cartesian end-effector goal, and planning the corresponding trajectory with MoveIt 2.
+  - Detecting objects from camera images using an AI-based perception model, in order to determine a Cartesian end-effector goal, and planning the corresponding trajectory with MoveIt 2.
   - Training reinforcement-learning policies in simulation using Isaac Lab and RL libraries, then deploying the trained policies on the physical robot.
   - Recording demonstrations in simulation with Isaac Lab, augmenting the demonstration dataset using Isaac Lab Mimic, training a policy with NVIDIA Isaac GR00T, and deploying it on the physical robot.
   - Recording real-world demonstrations with LeRobot, training imitation-learning policies from the collected dataset, and deploying them on the physical robot.
