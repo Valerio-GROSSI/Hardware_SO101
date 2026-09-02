@@ -47,6 +47,8 @@ def launch_setup(context, *args, **kwargs):
         namespace = ""
         namespace_value = ""
 
+    controller_activated_value = LaunchConfiguration("controller_activated").perform(context)
+
     use_rviz = LaunchConfiguration("use_rviz")
     headless_value = (LaunchConfiguration('headless').perform(context).lower() == "true")
 
@@ -108,6 +110,13 @@ def launch_setup(context, *args, **kwargs):
     robot_state_publisher_parameters = [robot_description]
     if namespace_value:
         robot_state_publisher_parameters.append({"frame_prefix": f"{namespace_value}/"})
+
+    forward_position_controller_arguments = ["forward_position_controller"]
+    joint_trajectory_controller_arguments = ["joint_trajectory_controller"]
+    if controller_activated_value == "forward_command_controller":
+        joint_trajectory_controller_arguments.append("--inactive")
+    else:
+        forward_position_controller_arguments.append("--inactive")
 
     robot_state_pub_node = Node(
         package="robot_state_publisher",
@@ -208,35 +217,35 @@ def launch_setup(context, *args, **kwargs):
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["joint_state_broadcaster", "--controller-manager", "controller_manager"],
+        arguments=["joint_state_broadcaster"], #"--controller-manager", "controller_manager"
     )
 
     forward_position_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["forward_position_controller", "--controller-manager", "controller_manager"], 
+        arguments=forward_position_controller_arguments, 
     )
     
     joint_trajectory_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["joint_trajectory_controller", "--controller-manager", "controller_manager", "--inactive"],
+        arguments=joint_trajectory_controller_arguments,
     )
 
     arm_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["arm_controller", "--controller-manager", "controller_manager"],
+        arguments=["arm_controller"],
     )
 
     gripper_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["gripper_controller", "--controller-manager", "controller_manager"],
+        arguments=["gripper_controller"],
     )
 
     # Delay loading and activation of `joint_state_broadcaster` after start of ros2_control_node
@@ -345,6 +354,7 @@ def generate_launch_description():
     recalibrate_arg = DeclareLaunchArgument("recalibrate", default_value="false")
     arm_arg = DeclareLaunchArgument("arm", default_value="follower", choices=["leader", "follower"], description="Modèle du bras")
     namespace_arg = DeclareLaunchArgument("namespace", default_value="", description="ROS namespace; empty means root namespace",)
+    controller_activated_arg = DeclareLaunchArgument("controller_activated", default_value="forward_command_controller")
     use_rviz_arg = DeclareLaunchArgument("use_rviz", default_value="false")
     headless_arg = DeclareLaunchArgument("headless", default_value="false")
     use_moveit_arg = DeclareLaunchArgument("use_moveit", default_value="false") 
@@ -359,6 +369,7 @@ def generate_launch_description():
         recalibrate_arg,
         arm_arg,
         namespace_arg,
+        controller_activated_arg,
         use_rviz_arg,
         headless_arg,
         use_moveit_arg,
