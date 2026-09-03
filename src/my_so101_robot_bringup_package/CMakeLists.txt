@@ -7,6 +7,10 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 
 install(
   DIRECTORY config launch
@@ -14,11 +18,20 @@ install(
 )
 
 install(
-  PROGRAMS
-    bridge_forward/bridge_forward.py
+  PROGRAMS bridge_forward/bridge_forward.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME bridge_forward
 )
+
+add_executable(teleop src/teleop.cpp)
+ament_target_dependencies(teleop
+              rclcpp
+              sensor_msgs
+              std_msgs
+              trajectory_msgs
+              )
+install(TARGETS teleop
+        DESTINATION lib/${PROJECT_NAME}) 
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

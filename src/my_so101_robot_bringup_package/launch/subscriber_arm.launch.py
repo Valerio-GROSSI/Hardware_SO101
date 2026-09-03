@@ -47,7 +47,7 @@ def launch_setup(context, *args, **kwargs):
         namespace = ""
         namespace_value = ""
 
-    controller_activated_value = LaunchConfiguration("controller_activated").perform(context)
+    activate_trajectory_controller = (LaunchConfiguration("activate_trajectory_controller").perform(context) == "true")
 
     use_rviz = LaunchConfiguration("use_rviz")
     headless_value = (LaunchConfiguration('headless').perform(context).lower() == "true")
@@ -96,7 +96,10 @@ def launch_setup(context, *args, **kwargs):
 
     robot_description = {"robot_description": robot_description_content}
 
+    robot_state_publisher_parameters = [robot_description]
+
     if namespace_value:
+        robot_state_publisher_parameters.append({"frame_prefix": f"{namespace_value}/"})
         rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"ns_{arm_value}.rviz"])
     else:
         rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"{arm_value}.rviz"])
@@ -106,14 +109,10 @@ def launch_setup(context, *args, **kwargs):
     world_filename = ("empty_gz_sim.sdf" if sim_gazebo_value else "empty_gazebo_classic.sdf")
     world_config_value = PathJoinSubstitution([FindPackageShare("so101_robot_description"),"world",world_filename]).perform(context)
     gz_args = f"--headless-rendering -s -v 4 -r {world_config_value}" if headless_value else f"-r {world_config_value}"
-
-    robot_state_publisher_parameters = [robot_description]
-    if namespace_value:
-        robot_state_publisher_parameters.append({"frame_prefix": f"{namespace_value}/"})
-
+    
     forward_position_controller_arguments = ["forward_position_controller"]
     joint_trajectory_controller_arguments = ["joint_trajectory_controller"]
-    if controller_activated_value == "forward_command_controller":
+    if activate_trajectory_controller:
         joint_trajectory_controller_arguments.append("--inactive")
     else:
         forward_position_controller_arguments.append("--inactive")
@@ -354,7 +353,7 @@ def generate_launch_description():
     recalibrate_arg = DeclareLaunchArgument("recalibrate", default_value="false")
     arm_arg = DeclareLaunchArgument("arm", default_value="follower", choices=["leader", "follower"], description="Modèle du bras")
     namespace_arg = DeclareLaunchArgument("namespace", default_value="", description="ROS namespace; empty means root namespace",)
-    controller_activated_arg = DeclareLaunchArgument("controller_activated", default_value="forward_command_controller")
+    activate_trajectory_controller_arg = DeclareLaunchArgument("activate_trajectory_controller", default_value="false")
     use_rviz_arg = DeclareLaunchArgument("use_rviz", default_value="false")
     headless_arg = DeclareLaunchArgument("headless", default_value="false")
     use_moveit_arg = DeclareLaunchArgument("use_moveit", default_value="false") 
@@ -369,7 +368,7 @@ def generate_launch_description():
         recalibrate_arg,
         arm_arg,
         namespace_arg,
-        controller_activated_arg,
+        activate_trajectory_controller_arg,
         use_rviz_arg,
         headless_arg,
         use_moveit_arg,
