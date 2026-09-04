@@ -51,6 +51,9 @@ def launch_setup(context, *args, **kwargs):
     controller_value = LaunchConfiguration("controller").perform(context)
 
     use_rviz = LaunchConfiguration("use_rviz")
+    include_world = LaunchConfiguration("include_world").perform(context)
+    include_world_value = ("true" if use_sim_value else include_world) # to have fix robot on simulation world
+
     headless_value = (LaunchConfiguration('headless').perform(context).lower() == "true")
 
     initial_positions_file = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "urdf", "initial_positions.yaml"])
@@ -90,6 +93,8 @@ def launch_setup(context, *args, **kwargs):
                 " namespace:=",
                 namespace,
                 " role:=follower", # subscriber_arm.launch.py donc le comportement hardware du bras est celui d'un follower (torque enclenché) et command_interfaces existants, que ce dernier soit un follower comme leader
+                " include_world:=",
+                include_world_value
             ]
         ),
         value_type=str,
@@ -368,6 +373,7 @@ def generate_launch_description():
     controller_arg = DeclareLaunchArgument("controller", default_value="forward_position_controller", choices=["forward_position_controller", "joint_trajectory_controller"])
     use_rviz_arg = DeclareLaunchArgument("use_rviz", default_value="false")
     headless_arg = DeclareLaunchArgument("headless", default_value="false")
+    include_world_arg = DeclareLaunchArgument("include_world", default_value="false")
     use_moveit_arg = DeclareLaunchArgument("use_moveit", default_value="false")
 
     return LaunchDescription([
@@ -383,6 +389,7 @@ def generate_launch_description():
         controller_arg,
         use_rviz_arg,
         headless_arg,
+        include_world_arg,
         use_moveit_arg,
         SetParameter(name="use_sim_time", value=use_sim),
         OpaqueFunction(function = launch_setup),

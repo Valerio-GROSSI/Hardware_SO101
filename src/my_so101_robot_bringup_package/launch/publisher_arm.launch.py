@@ -20,6 +20,7 @@ def launch_setup(context, *args, **kwargs):
     namespace = LaunchConfiguration("namespace")
     namespace_value = LaunchConfiguration("namespace").perform(context)    
     use_rviz = LaunchConfiguration("use_rviz")
+    include_world = LaunchConfiguration("include_world")
 
     initial_positions_file = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "urdf", "initial_positions.yaml"])
     controllers_config_file = PathJoinSubstitution([FindPackageShare("so101_robot_bringup"), "config", "pub_controllers.yaml"])
@@ -53,6 +54,8 @@ def launch_setup(context, *args, **kwargs):
                 " namespace:=",
                 namespace,
                 " role:=leader", # publisher_arm.launch.py donc le comportement hardware du bras est celui d'un leader (torque désenclenché) et command_interfaces non existants, que ce dernier soit un leader comme follower
+                " include_world:=",
+                include_world,
             ]
         ),
         value_type=str,
@@ -145,6 +148,7 @@ def generate_launch_description():
     arm_arg = DeclareLaunchArgument("arm", default_value="leader", choices=["leader", "follower"], description="Modèle du bras")
     namespace_arg = DeclareLaunchArgument("namespace", default_value="", description="ROS namespace; empty means root namespace",)
     use_rviz_arg = DeclareLaunchArgument("use_rviz", default_value="false")
+    include_world_arg = DeclareLaunchArgument("include_world", default_value="false")
 
     return LaunchDescription([
         use_mock_hardware_arg,
@@ -154,6 +158,7 @@ def generate_launch_description():
         arm_arg,
         namespace_arg,
         use_rviz_arg,
+        include_world_arg,
         OpaqueFunction(function = launch_setup),
     ])
 

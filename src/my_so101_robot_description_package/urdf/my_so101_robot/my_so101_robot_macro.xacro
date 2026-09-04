@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:macro name="so101" params="prefix parent *origin">
+  <xacro:macro name="so101" params="prefix">
     <!-- LINKS -->
     <!-- base link -->
     <link name="${prefix}base">
@@ -411,12 +411,6 @@
       <child link="${prefix}shoulder"/>
       <axis xyz="0 0 1"/>
       <limit effort="10" velocity="10" lower="-1.91986" upper="1.91986"/>
-    </joint>
-    <!-- Joint from environment to base -->
-    <joint name="${prefix}base_joint" type="fixed">
-      <xacro:insert_block name="origin"/>
-      <parent link="${parent}"/>
-      <child link="${prefix}base"/>
     </joint>
   </xacro:macro>
 

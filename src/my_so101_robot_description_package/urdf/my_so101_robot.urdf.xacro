@@ -15,15 +15,25 @@
   <xacro:arg name="arm" default="follower"/>
   <xacro:arg name="namespace" default=""/>
   <xacro:arg name="role" default="follower"/>
+  <xacro:arg name="include_world" default="true"/>
 
   <xacro:include filename="$(find so101_robot_description)/urdf/my_so101_robot/my_so101_robot_macro.xacro" />
   <xacro:include filename="$(find so101_robot_description)/urdf/my_so101_robot/my_so101_robot_macro.ros2_control.xacro" />
 
-  <link name="world"/>
-
-  <xacro:so101 prefix="$(arg prefix)" parent="world">
-    <origin xyz="0 0 0" rpy="0 0 0"/> <!-- position robot in the world -->
+  <xacro:so101 
+    prefix="$(arg prefix)">
   </xacro:so101>
+  
+  <xacro:if value="$(arg include_world)">
+    <link name="world"/>
+
+    <!-- Joint from environment to base -->
+    <joint name="$(arg prefix)base_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- position robot in the world -->
+      <parent link="world"/>
+      <child link="$(arg prefix)base"/>
+    </joint>
+  </xacro:if>
 
   <xacro:so101_ros2_control
     name="$(arg name)"
