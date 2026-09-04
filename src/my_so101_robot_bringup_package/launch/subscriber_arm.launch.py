@@ -1,9 +1,10 @@
 import os
 from ament_index_python.packages import get_package_prefix
 from launch import LaunchDescription, LaunchService
-from launch.actions import DeclareLaunchArgument, RegisterEventHandler, OpaqueFunction, IncludeLaunchDescription, TimerAction, SetEnvironmentVariable
+from launch.actions import DeclareLaunchArgument, OpaqueFunction, IncludeLaunchDescription, SetEnvironmentVariable
+# from launch.actions import RegisterEventHandler, TimerAction
 from launch.conditions import IfCondition, UnlessCondition
-from launch.event_handlers import OnProcessExit, OnProcessStart
+# from launch.event_handlers import OnProcessExit, OnProcessStart
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node, SetParameter
 from launch_ros.parameter_descriptions import ParameterValue
@@ -47,7 +48,7 @@ def launch_setup(context, *args, **kwargs):
         namespace = ""
         namespace_value = ""
 
-    activate_trajectory_controller = (LaunchConfiguration("activate_trajectory_controller").perform(context) == "true")
+    controller_value = LaunchConfiguration("controller").perform(context)
 
     use_rviz = LaunchConfiguration("use_rviz")
     headless_value = (LaunchConfiguration('headless').perform(context).lower() == "true")
@@ -103,16 +104,14 @@ def launch_setup(context, *args, **kwargs):
         rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"ns_{arm_value}.rviz"])
     else:
         rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"{arm_value}.rviz"])
-
-    rviz_config = PathJoinSubstitution([FindPackageShare("so101_robot_description"), "rviz", f"{arm_value}.rviz"])
-
+    
     world_filename = ("empty_gz_sim.sdf" if sim_gazebo_value else "empty_gazebo_classic.sdf")
     world_config_value = PathJoinSubstitution([FindPackageShare("so101_robot_description"),"world",world_filename]).perform(context)
     gz_args = f"--headless-rendering -s -v 4 -r {world_config_value}" if headless_value else f"-r {world_config_value}"
     
-    forward_position_controller_arguments = ["forward_position_controller"]
-    joint_trajectory_controller_arguments = ["joint_trajectory_controller"]
-    if activate_trajectory_controller:
+    forward_position_controller_arguments = ["forward_position_controller", "--controller-manager-timeout", "60"]
+    joint_trajectory_controller_arguments = ["joint_trajectory_controller", "--controller-manager-timeout", "60"]
+    if controller_value == "forward_position_controller":
         joint_trajectory_controller_arguments.append("--inactive")
     else:
         forward_position_controller_arguments.append("--inactive")
@@ -216,14 +215,18 @@ def launch_setup(context, *args, **kwargs):
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["joint_state_broadcaster"], #"--controller-manager", "controller_manager"
+        arguments=["joint_state_broadcaster",
+                   "--controller-manager-timeout",
+                   "60",
+                   ], #"--controller-manager", "controller_manager" (utilisé par défaut)
     )
 
     forward_position_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=forward_position_controller_arguments, 
+        arguments=forward_position_controller_arguments,
+        condition=UnlessCondition(use_moveit),
     )
     
     joint_trajectory_controller_spawner = Node(
@@ -231,78 +234,87 @@ def launch_setup(context, *args, **kwargs):
         executable="spawner",
         namespace=namespace,
         arguments=joint_trajectory_controller_arguments,
+        condition=UnlessCondition(use_moveit),
     )
 
     arm_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["arm_controller"],
+        arguments=["arm_controller",
+                   "--controller-manager-timeout",
+                   "60",
+                   ],
+        condition=IfCondition(use_moveit),
     )
 
     gripper_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["gripper_controller"],
+        arguments=["gripper_controller",
+                   "--controller-manager-timeout",
+                   "60",
+                   ],
+        condition=IfCondition(use_moveit),
     )
 
     # Delay loading and activation of `joint_state_broadcaster` after start of ros2_control_node
-    if use_sim_value:
-        spawn_action = (
-            gz_spawn_entity if sim_gazebo_value else gazebo_classic_spawn_entity
-        )
-        delay_joint_state_broadcaster_spawner = RegisterEventHandler(
-            event_handler=OnProcessExit(
-                target_action=spawn_action,
-                on_exit=[
-                    TimerAction(
-                        period=3.0,
-                        actions=[joint_state_broadcaster_spawner],
-                    )
-                ],
-            )
-        )
-    else:
-        delay_joint_state_broadcaster_spawner = RegisterEventHandler(
-            event_handler=OnProcessStart(
-                target_action=ros2_control_node,
-                on_start=[
-                    TimerAction(
-                        period=3.0,
-                        actions=[joint_state_broadcaster_spawner],
-                    )
-                ],
-            )
-        )
-    delay_forward_position_controller_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_state_broadcaster_spawner,
-            on_exit=[forward_position_controller_spawner],
-        ),
-        condition=UnlessCondition(use_moveit),
-    )
-    delay_joint_trajectory_controller_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-        target_action=joint_state_broadcaster_spawner,
-        on_exit=[joint_trajectory_controller_spawner],
-        ),
-        condition=UnlessCondition(use_moveit),
-    )
-    delay_arm_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_state_broadcaster_spawner,
-            on_exit=[arm_controller_spawner],
-        ),
-        condition=IfCondition(use_moveit),
-    )
-    delay_gripper_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-        target_action=joint_state_broadcaster_spawner,
-        on_exit=[gripper_controller_spawner],
-        ),
-        condition=IfCondition(use_moveit),
-    )
+    # if use_sim_value:
+    #     spawn_action = (
+    #         gz_spawn_entity if sim_gazebo_value else gazebo_classic_spawn_entity
+    #     )
+    #     delay_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #         event_handler=OnProcessExit(
+    #             target_action=spawn_action,
+    #             on_exit=[
+    #                 TimerAction(
+    #                     period=3.0,
+    #                     actions=[joint_state_broadcaster_spawner],
+    #                 )
+    #             ],
+    #         )
+    #     )
+    # else:
+    #     delay_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #         event_handler=OnProcessStart(
+    #             target_action=ros2_control_node,
+    #             on_start=[
+    #                 TimerAction(
+    #                     period=3.0,
+    #                     actions=[joint_state_broadcaster_spawner],
+    #                 )
+    #             ],
+    #         )
+    #     )
+    # delay_forward_position_controller_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #     event_handler=OnProcessExit(
+    #         target_action=joint_state_broadcaster_spawner,
+    #         on_exit=[forward_position_controller_spawner],
+    #     ),
+    #     condition=UnlessCondition(use_moveit),
+    # )
+    # delay_joint_trajectory_controller_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #     event_handler=OnProcessExit(
+    #     target_action=joint_state_broadcaster_spawner,
+    #     on_exit=[joint_trajectory_controller_spawner],
+    #     ),
+    #     condition=UnlessCondition(use_moveit),
+    # )
+    # delay_arm_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #     event_handler=OnProcessExit(
+    #         target_action=joint_state_broadcaster_spawner,
+    #         on_exit=[arm_controller_spawner],
+    #     ),
+    #     condition=IfCondition(use_moveit),
+    # )
+    # delay_gripper_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #     event_handler=OnProcessExit(
+    #     target_action=joint_state_broadcaster_spawner,
+    #     on_exit=[gripper_controller_spawner],
+    #     ),
+    #     condition=IfCondition(use_moveit),
+    # )
 
     joint_state_publisher_gui_node = Node(
         package='joint_state_publisher_gui',
@@ -332,11 +344,11 @@ def launch_setup(context, *args, **kwargs):
         gz_spawn_entity,
         gazebo_classic_spawn_entity,
         gz_clock_bridge,
-        delay_joint_state_broadcaster_spawner,
-        delay_forward_position_controller_after_joint_state_broadcaster_spawner,
-        delay_joint_trajectory_controller_after_joint_state_broadcaster_spawner,
-        delay_arm_controller_spawner_after_joint_state_broadcaster_spawner,
-        delay_gripper_controller_spawner_after_joint_state_broadcaster_spawner,
+        joint_state_broadcaster_spawner,
+        forward_position_controller_spawner,
+        joint_trajectory_controller_spawner,
+        arm_controller_spawner,
+        gripper_controller_spawner,
         # joint_state_broadcaster_spawner,
         rviz_node,
     ]
@@ -349,14 +361,14 @@ def generate_launch_description():
     sim_gazebo_classic_arg = DeclareLaunchArgument('sim_gazebo_classic', default_value='false')
     use_mock_hardware_arg = DeclareLaunchArgument("use_mock_hardware", default_value="false", description="Start robot with mock hardware mirroring command to its states.")
     mock_sensor_commands_arg = DeclareLaunchArgument("mock_sensor_commands", default_value="true", description="Start robot with mock sensor commands.")
-    usb_port_arg = DeclareLaunchArgument("usb_port", default_value="/dev/ttyACM0")
+    usb_port_arg = DeclareLaunchArgument("usb_port", default_value="/dev/ttyACM1")
     recalibrate_arg = DeclareLaunchArgument("recalibrate", default_value="false")
     arm_arg = DeclareLaunchArgument("arm", default_value="follower", choices=["leader", "follower"], description="Modèle du bras")
     namespace_arg = DeclareLaunchArgument("namespace", default_value="", description="ROS namespace; empty means root namespace",)
-    activate_trajectory_controller_arg = DeclareLaunchArgument("activate_trajectory_controller", default_value="false")
+    controller_arg = DeclareLaunchArgument("controller", default_value="forward_position_controller", choices=["forward_position_controller", "joint_trajectory_controller"])
     use_rviz_arg = DeclareLaunchArgument("use_rviz", default_value="false")
     headless_arg = DeclareLaunchArgument("headless", default_value="false")
-    use_moveit_arg = DeclareLaunchArgument("use_moveit", default_value="false") 
+    use_moveit_arg = DeclareLaunchArgument("use_moveit", default_value="false")
 
     return LaunchDescription([
         use_sim_arg,
@@ -368,7 +380,7 @@ def generate_launch_description():
         recalibrate_arg,
         arm_arg,
         namespace_arg,
-        activate_trajectory_controller_arg,
+        controller_arg,
         use_rviz_arg,
         headless_arg,
         use_moveit_arg,

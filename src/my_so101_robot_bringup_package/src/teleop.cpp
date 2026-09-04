@@ -16,8 +16,7 @@ public:
     SubscriberArmCommandRelay() : Node("publisher_subscriber_relay") {
         RCLCPP_INFO(get_logger(), "Initializing SubscriberArmCommandRelay...");
 
-        this->declare_parameter<bool>("activate_trajectory_controller", "false");
-        this->get_parameter("activate_trajectory_controller", activate_trajectory_controller_);
+        this->declare_parameter<std::string>("controller", "forward_position_controller");
 
         this->declare_parameter<std::string>("pub_arm_joint_topic", "/leader/joint_states");
         this->get_parameter("pub_arm_joint_topic", pub_arm_joint_topic_);
@@ -25,10 +24,10 @@ public:
         this->declare_parameter<std::string>("sub_arm_joint_topic", "/follower/joint_states");
         this->get_parameter("sub_arm_joint_topic", sub_arm_joint_topic_);
 
-        this->declare_parameter<std::string>("sub_arm_jtc_topic", "trajectory_controller/joint_trajectory");
+        this->declare_parameter<std::string>("sub_arm_jtc_topic", "joint_trajectory_controller/joint_trajectory");
         this->get_parameter("sub_arm_jtc_topic", sub_arm_jtc_topic_);
 
-        this->declare_parameter<std::string>("sub_arm_fcc_topic", "forward_controller/commands");
+        this->declare_parameter<std::string>("sub_arm_fcc_topic", "forward_position_controller/commands");
         this->get_parameter("sub_arm_fcc_topic", sub_arm_fcc_topic_);
 
         this->declare_parameter<double>("publish_rate_hz", 50.0);
@@ -41,8 +40,8 @@ public:
         this->get_parameter("point_dt_s", point_dt_s_);
 
         this->declare_parameter<std::vector<std::string>>("arm_joints", 
-            std::vector<std::string>{"soulder_pan", "shoulder_lift", "elbow_flex",
-                                      "wrist_flex", "wrist_roll", "gripper"});
+            std::vector<std::string>{"joint1", "joint2", "joint3",
+                                      "joint4", "joint5", "joint6"}); //{"soulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll", "gripper"}
         this->get_parameter("arm_joints", arm_joints_);
 
         RCLCPP_INFO(get_logger(), "Publisher Arm Joint States Topic: %s", pub_arm_joint_topic_.c_str());
@@ -79,7 +78,7 @@ public:
 
 private:
     // Parameters
-    bool activate_trajectory_controller_;
+    std::string controller_;
     std::string pub_arm_joint_topic_;
     std::string sub_arm_joint_topic_;
     std::string sub_arm_jtc_topic_;
@@ -149,7 +148,9 @@ private:
     }
 
     void publish_arm(const rclcpp::Time &time) {
-        if (activate_trajectory_controller_) {
+            this->get_parameter("controller", controller_);
+
+        if (controller_ == "joint_trajectory_controller") {
             trajectory_msgs::msg::JointTrajectory jt;
             jt.header.stamp = time;
             jt.joint_names = arm_joints_;

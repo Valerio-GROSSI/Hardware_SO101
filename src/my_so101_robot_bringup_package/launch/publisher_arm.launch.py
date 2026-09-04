@@ -1,7 +1,8 @@
 from launch import LaunchDescription, LaunchService
-from launch.actions import DeclareLaunchArgument, RegisterEventHandler, OpaqueFunction, TimerAction
+from launch.actions import DeclareLaunchArgument, OpaqueFunction
+#from launch.actions import RegisterEventHandler, TimerAction
 from launch.conditions import IfCondition
-from launch.event_handlers import OnProcessStart
+# from launch.event_handlers import OnProcessStart
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
@@ -90,21 +91,24 @@ def launch_setup(context, *args, **kwargs):
         package="controller_manager",
         executable="spawner",
         namespace=namespace,
-        arguments=["joint_state_broadcaster", "--controller-manager", "controller_manager"],
+        arguments=["joint_state_broadcaster",
+                   "--controller-manager-timeout",
+                   "30",
+                   ], #"--controller-manager", "controller_manager" (utilisé par défaut)
     )
 
     # Delay loading and activation of `joint_state_broadcaster` after start of ros2_control_node
-    delay_joint_state_broadcaster_spawner = RegisterEventHandler(
-        event_handler=OnProcessStart(
-            target_action=ros2_control_node,
-            on_start=[
-                TimerAction(
-                    period=3.0,
-                    actions=[joint_state_broadcaster_spawner],
-                )
-            ],
-        )
-    )
+    # delay_joint_state_broadcaster_spawner = RegisterEventHandler(
+    #     event_handler=OnProcessStart(
+    #         target_action=ros2_control_node,
+    #         on_start=[
+    #             TimerAction(
+    #                 period=3.0,
+    #                 actions=[joint_state_broadcaster_spawner],
+    #             )
+    #         ],
+    #     )
+    # )
 
     joint_state_publisher_gui_node = Node(
         package='joint_state_publisher_gui',
@@ -127,7 +131,7 @@ def launch_setup(context, *args, **kwargs):
     return [
         robot_state_pub_node,
         ros2_control_node,
-        delay_joint_state_broadcaster_spawner,
+        joint_state_broadcaster_spawner,
         # joint_state_publisher_gui_node,
         rviz_node,
     ]
